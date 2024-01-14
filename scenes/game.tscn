@@ -1,11 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://8q68mjkpr4h"]
+[gd_scene load_steps=20 format=3 uid="uid://8q68mjkpr4h"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_1kk23"]
 [ext_resource type="PackedScene" uid="uid://cfnaeo2wj683m" path="res://scenes/level.tscn" id="1_37nmh"]
-[ext_resource type="PackedScene" uid="uid://bnddpi4sbg6r1" path="res://transition_scene.tscn" id="2_4gf37"]
+[ext_resource type="PackedScene" uid="uid://bnddpi4sbg6r1" path="res://scenes/transition_scene.tscn" id="2_4gf37"]
 [ext_resource type="PackedScene" uid="uid://dgb13qkybfonc" path="res://scenes/player.tscn" id="2_secic"]
-[ext_resource type="PackedScene" uid="uid://ku1mpxt0siug" path="res://scenes/game_won.tscn" id="3_1uso2"]
 [ext_resource type="PackedScene" uid="uid://bvqgwanibjf1h" path="res://scenes/hud_death.tscn" id="3_rkar1"]
+[ext_resource type="Script" path="res://scenes/game_won.gd" id="3_tipl6"]
 [ext_resource type="Texture2D" uid="uid://bsbv7x2korypf" path="res://graphics/particle_square.png" id="4_6gaa1"]
 [ext_resource type="Script" path="res://scripts/gun_item.gd" id="4_160tp"]
 [ext_resource type="Texture2D" uid="uid://b22twkhqwpr5b" path="res://graphics/gun.png" id="5_6cn6q"]
@@ -13,6 +13,19 @@
 [ext_resource type="Script" path="res://scripts/fade_in_fade_out.gd" id="9_k60gs"]
 [ext_resource type="PackedScene" uid="uid://dt7in4o847p41" path="res://scenes/hud.tscn" id="10_fu2x8"]
 [ext_resource type="PackedScene" uid="uid://wf5womlcvd6a" path="res://scenes/pause/pause.tscn" id="12_t8f2a"]
+
+[sub_resource type="PackedScene" id="PackedScene_sc8gl"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(1073741829, 1073741828, 37, 36, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("Game Won", "Node2D", "script", "CanvasLayer", "CanvasLayer", "Panel", "Panel", "anchors_preset", "anchor_left", "anchor_top", "anchor_right", "anchor_bottom", "grow_horizontal", "grow_vertical", "metadata/_edit_use_anchors_", "Label Title", "Label", "layout_mode", "anchor_left", "anchor_top", "anchor_right", "anchor_bottom", "theme_override_font_sizes/font_size", "text", "horizontal_alignment", "vertical_alignment", "metadata/_edit_use_anchors_", "Button", "Button", "layout_mode", "anchor_left", "anchor_top", "anchor_right", "anchor_bottom", "text", "metadata/_edit_use_anchors_", "_on_button_pressed", "pressed"),
+"node_count": 5,
+"node_paths": [NodePath("."), NodePath("./CanvasLayer"), NodePath("./CanvasLayer/Panel"), NodePath("./CanvasLayer/Panel"), NodePath("."), NodePath("CanvasLayer/Panel/Button")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 1, 2, 0, 0, 1073741824, 0, 4, 3, -1, 0, 0, 1073741825, 0, 6, 5, -1, 8, 7, 1, 8, 2, 9, 3, 10, 4, 11, 5, 12, 6, 13, 7, 14, 8, 0, 1073741826, 0, 16, 15, -1, 10, 17, 9, 18, 10, 19, 11, 20, 12, 21, 13, 22, 14, 23, 15, 24, 16, 25, 17, 26, 18, 0, 1073741827, 0, 28, 27, -1, 7, 29, 19, 30, 20, 31, 21, 32, 22, 33, 23, 34, 24, 35, 25, 0),
+"variants": [ExtResource("3_tipl6"), -1, 0.102344, 0.254167, 0.901563, 0.675, 2, 2, true, 0, 0.269795, 0.171617, 0.738025, 0.49505, 40, "Thanks for playing!", 1, 1, true, 0, 0.341153, 0.528053, 0.664712, 0.828383, "Main Menu", true],
+"version": 3
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kwsie"]
 radius = 7.0
@@ -109,7 +122,7 @@ _data = {
 process_mode = 1
 script = ExtResource("1_1kk23")
 transition_scene = ExtResource("2_4gf37")
-game_won_scene = ExtResource("3_1uso2")
+game_won_scene = SubResource("PackedScene_sc8gl")
 hud_death = ExtResource("3_rkar1")
 hud = NodePath("HUD")
 fade_in_fade_out = NodePath("HUD/FadeInOutOverlay")

@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bqi52p5nbj8qc"]
+
+[ext_resource type="FontFile" uid="uid://lrhpf5vog7ak" path="res://fonts/PixCon.ttf" id="1_yvmbr"]
+
+[resource]
+default_font = ExtResource("1_yvmbr")
+default_font_size = 20

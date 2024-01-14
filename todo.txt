@@ -6,8 +6,8 @@ Must have:
 ✔ Game Won Screen
 
 Should Have:
-- Control Information (on Pause)
-✔ Despawn Bullets when too slow for 1 second
+- Control Information (On Pause & Main Menu)
+✔ Queue Free Bullets when too slow for 1 second
 - Upgrade Screen Show Current Coins
 - Upgrade Screen Sound Buy
 - Upgrade Screen Sound Can't Buy
@@ -25,7 +25,7 @@ Nice To Have
 
 When done:
 	Create itch.io page
-	Create Descrition (+Tools Used)
+	Create Description (+Tools Used)
 
 Dropped Features:
 - chests in terrain (overlays blocks)
@@ -42,13 +42,6 @@ Dropped Features:
 ✔ Camera Shake When Impact Enemy
 ✔ Have Bat Bounce Back when Hit
 ✔️ Change Visuals and Collision Shape when crouching
-
----
-
-ERROR: Removing a CollisionObject node during a physics callback is not allowed and will cause undesired behavior. Remo.
-   at: _notification (scene/2d/collision_object_2d.cpp:99)
-   
----
 
 
 ✔️ Bat Attack Feedback
@@ -113,7 +106,7 @@ TODO:
 		- Move Towards Player When Within Distance
 		- Endless Spawn, based on interval of level with random variation
 		
-	- Fireslimes
+	- Fire Slimes
 		- Leave behind damaging flames like a Molotov
 		
 - Player being pushed back from shot

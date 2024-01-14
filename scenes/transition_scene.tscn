@@ -1,0 +1,239 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnddpi4sbg6r1"]
+
+[ext_resource type="Script" path="res://scripts/transition_scene.gd" id="1_5fpo5"]
+[ext_resource type="Script" path="res://scripts/upgrade_panel.gd" id="2_2dg61"]
+[ext_resource type="Theme" uid="uid://bqi52p5nbj8qc" path="res://theme.tres" id="3_rex8t"]
+[ext_resource type="Texture2D" uid="uid://48chuq7juon" path="res://graphics/coin.png" id="3_s0usu"]
+
+[node name="TransitionScene" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1308.0
+offset_top = 322.0
+offset_right = 1348.0
+offset_bottom = 362.0
+script = ExtResource("1_5fpo5")
+
+[node name="Button Next Level" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -20.0
+anchor_top = 5.925
+anchor_right = -13.225
+anchor_bottom = 7.75
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_rex8t")
+theme_override_font_sizes/font_size = 30
+text = "Next Level"
+metadata/_edit_use_anchors_ = true
+
+[node name="Upgrade Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -30.5
+anchor_top = -4.275
+anchor_right = -2.85
+anchor_bottom = 5.5
+script = ExtResource("2_2dg61")
+metadata/_edit_use_anchors_ = true
+
+[node name="Shot Speed 1" type="Button" parent="Upgrade Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0207957
+anchor_top = 0.2711
+anchor_right = 0.299277
+anchor_bottom = 0.445013
+offset_right = 3.05176e-05
+theme = ExtResource("3_rex8t")
+theme_override_font_sizes/font_size = 15
+text = "Shoot Faster"
+metadata/_edit_use_anchors_ = true
+
+[node name="Shot Speed 2" type="Button" parent="Upgrade Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0198915
+anchor_top = 0.468031
+anchor_right = 0.301085
+anchor_bottom = 0.641944
+theme = ExtResource("3_rex8t")
+theme_override_font_sizes/font_size = 15
+text = "Shoot Even Faster"
+metadata/_edit_use_anchors_ = true
+
+[node name="Shot Speed 3" type="Button" parent="Upgrade Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0216998
+anchor_top = 0.664962
+anchor_right = 0.301085
+anchor_bottom = 0.838875
+offset_bottom = -1.52588e-05
+theme = ExtResource("3_rex8t")
+theme_override_font_sizes/font_size = 15
+text = "Gotta Shoot Fast"
+metadata/_edit_use_anchors_ = true
+
+[node name="Extra Shot 1" type="Button" parent="Upgrade Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.340868
+anchor_top = 0.265985
+anchor_right = 0.579566
+anchor_bottom = 0.439897
+theme = ExtResource("3_rex8t")
+theme_override_font_sizes/font_size = 15
+text = "2 Bullets"
+metadata/_edit_use_anchors_ = true
+
+[node name="Extra Shot 2" type="Button" parent="Upgrade Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.341772
+anchor_top = 0.460358
+anchor_right = 0.58047
+anchor_bottom = 0.634271
+theme = ExtResource("3_rex8t")
+theme_override_font_sizes/font_size = 15
+text = "3 Bullets"
+metadata/_edit_use_anchors_ = true
+
+[node name="Extra Jump" type="Button" parent="Upgrade Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.341772
+anchor_top = 0.662404
+anchor_right = 0.58047
+anchor_bottom = 0.836317
+offset_right = 6.10352e-05
+theme = ExtResource("3_rex8t")
+theme_override_font_sizes/font_size = 15
+text = "Extra Jump"
+metadata/_edit_use_anchors_ = true
+
+[node name="Double The Bats" type="Button" parent="Upgrade Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.650995
+anchor_top = 0.171356
+anchor_right = 0.896022
+anchor_bottom = 0.345268
+theme = ExtResource("3_rex8t")
+theme_override_colors/font_color = Color(0.564706, 0.780392, 0.298039, 1)
+theme_override_font_sizes/font_size = 15
+text = "Double The Bats"
+metadata/_edit_use_anchors_ = true
+
+[node name="Quadruple Bats" type="Button" parent="Upgrade Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.650995
+anchor_top = 0.358056
+anchor_right = 0.896022
+anchor_bottom = 0.531969
+theme = ExtResource("3_rex8t")
+theme_override_colors/font_color = Color(0.908075, 0.511391, 0.271065, 1)
+theme_override_font_sizes/font_size = 15
+text = "Quadruple Bats"
+metadata/_edit_use_anchors_ = true
+
+[node name="All The Bats" type="Button" parent="Upgrade Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.648282
+anchor_top = 0.764706
+anchor_right = 0.89783
+anchor_bottom = 0.938619
+theme = ExtResource("3_rex8t")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "ALL the Bats!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label More Bats Title" type="Label" parent="Upgrade Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.615732
+anchor_top = 0.0460358
+anchor_right = 0.94123
+anchor_bottom = 0.153453
+theme = ExtResource("3_rex8t")
+theme_override_font_sizes/font_size = 15
+text = "Get Some Cash, Get Some Bats"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label Many Bats Warning" type="Label" parent="Upgrade Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.614828
+anchor_top = 0.58312
+anchor_right = 0.928096
+anchor_bottom = 0.733655
+offset_top = 1.52588e-05
+offset_right = -0.473999
+offset_bottom = 0.140991
+theme = ExtResource("3_rex8t")
+theme_override_font_sizes/font_size = 15
+text = "Warning: Will cook your CPU!
+Use at your own risk! Silly!"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Title Level Complete" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -22.65
+anchor_top = -7.675
+anchor_right = -9.825
+anchor_bottom = -5.875
+theme = ExtResource("3_rex8t")
+theme_override_font_sizes/font_size = 40
+text = "Level complete"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Title Spend Cash" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -22.875
+anchor_top = -5.95
+anchor_right = -9.45
+anchor_bottom = -4.825
+theme = ExtResource("3_rex8t")
+text = "Time to spend some cash!"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Coins" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -28.1
+anchor_top = -4.175
+anchor_right = -23.575
+anchor_bottom = -2.375
+theme = ExtResource("3_rex8t")
+theme_override_font_sizes/font_size = 40
+text = "Coins"
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Coin" type="Sprite2D" parent="."]
+position = Vector2(-1163, -122)
+scale = Vector2(4, 4)
+texture = ExtResource("3_s0usu")
+
+[connection signal="button_up" from="Button Next Level" to="." method="_on_next_level_button_up"]
+[connection signal="pressed" from="Upgrade Panel/Shot Speed 1" to="Upgrade Panel" method="_on_shot_speed_1_pressed"]
+[connection signal="pressed" from="Upgrade Panel/Shot Speed 2" to="Upgrade Panel" method="_on_shot_speed_2_pressed"]
+[connection signal="pressed" from="Upgrade Panel/Shot Speed 3" to="Upgrade Panel" method="_on_shot_speed_3_pressed"]
+[connection signal="pressed" from="Upgrade Panel/Extra Shot 1" to="Upgrade Panel" method="_on_extra_shot_1_pressed"]
+[connection signal="pressed" from="Upgrade Panel/Extra Shot 2" to="Upgrade Panel" method="_on_extra_shot_2_pressed"]
+[connection signal="pressed" from="Upgrade Panel/Extra Jump" to="Upgrade Panel" method="_on_extra_jump_pressed"]
+[connection signal="pressed" from="Upgrade Panel/Double The Bats" to="Upgrade Panel" method="_on_double_the_bats_pressed"]
+[connection signal="pressed" from="Upgrade Panel/Quadruple Bats" to="Upgrade Panel" method="_on_quadruple_bats_pressed"]
+[connection signal="pressed" from="Upgrade Panel/All The Bats" to="Upgrade Panel" method="_on_all_the_bats_pressed"]

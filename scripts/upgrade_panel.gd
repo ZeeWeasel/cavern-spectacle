@@ -28,9 +28,10 @@ func button_setup(btn: Button, cost: int, bought : bool):
 func buy(cost : int, btn : Button) -> bool:
 	if cost <= Globals.coins:
 		Globals.coins -= cost
-		# Play Sound
 		set_button_bought(btn)
+		Audio.play_sound_2d(Sounds.snd_level_exit)
 		return true
+	Audio.play_sound_2d(Sounds.snd_level_exit_false)
 	return false
 
 func set_button_bought(button : Button):
