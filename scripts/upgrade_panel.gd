@@ -1,5 +1,7 @@
 extends Panel
 
+@onready var coin_label : Label = $"../Coins"
+
 @onready var btn_shot_speed_1: Button = $'Shot Speed 1'
 @onready var btn_shot_speed_2: Button = $'Shot Speed 2'
 @onready var btn_shot_speed_3: Button = $'Shot Speed 3'
@@ -11,6 +13,7 @@ extends Panel
 @onready var btn_all_the_bats: Button = $'All The Bats'
 
 func _ready():
+	coin_label.text = str(Globals.coins)
 	button_setup(btn_shot_speed_1, Upgrades.shot_speed_1_cost, Upgrades.shot_speed_1)
 	button_setup(btn_shot_speed_2, Upgrades.shot_speed_2_cost, Upgrades.shot_speed_2)
 	button_setup(btn_shot_speed_3, Upgrades.shot_speed_3_cost, Upgrades.shot_speed_3)
@@ -30,12 +33,13 @@ func buy(cost : int, btn : Button) -> bool:
 		Globals.coins -= cost
 		set_button_bought(btn)
 		Audio.play_sound_2d(Sounds.snd_level_exit)
+		coin_label.text = str(Globals.coins)
 		return true
 	Audio.play_sound_2d(Sounds.snd_level_exit_false)
 	return false
 
 func set_button_bought(button : Button):
-	button.text = button.text + " bought"
+	button.text = button.text # + " bought"
 	button.disabled = true
 
 func _on_shot_speed_1_pressed() -> void:

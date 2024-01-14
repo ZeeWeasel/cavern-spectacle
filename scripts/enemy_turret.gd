@@ -251,12 +251,11 @@ func _on_hitbox_body_entered(body):
 		spawn_screws()
 		EventBus.enemy_hit.emit()
 		load_textures_hit()
-		Audio.play_sound_random(Sounds.list_explosions, 0.25)
+		Audio.play_sound_random(Sounds.list_explosions, 0.10)
 
 @export var reload_duration = 5
 
 func _on_reload_timer_timeout():
-	print("Finished Reloading")
 	ammo_current = ammo_max
 
 

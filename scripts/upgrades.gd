@@ -38,10 +38,10 @@ var double_the_bats : bool = false
 var double_the_bats_cost = -50
 
 var quadruple_the_bats : bool = false
-var quadruple_the_bats_cost = -100
+var quadruple_the_bats_cost = -50
 
 var all_the_bats : bool = false
-var all_the_bats_cost = -200
+var all_the_bats_cost = -100
 
 func bat_multiplier() -> int:
 	if all_the_bats: return 8
