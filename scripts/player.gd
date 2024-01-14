@@ -50,6 +50,8 @@ func _on_damage_player(_damage):
 	hit_timer.start()
 	
 var _dead : bool = false	
+
+var jump_particles : PackedScene = preload("res://scenes/particles_jump.tscn")
 	
 func death():
 	_dead = true
@@ -58,6 +60,8 @@ func death():
 	collision_shape.disabled = true
 	collision_shape_crouched.disabled = true
 	Audio.play_sound(Sounds.snd_player_death, 0.5)
+	
+var _in_air : bool = false
 		
 func _physics_process(delta):
 	
@@ -82,6 +86,7 @@ func _physics_process(delta):
 		
 	# Add the gravity.
 	if not is_on_floor():
+		_in_air = true
 		if _crouched:
 			velocity.y += gravity*1.75 * delta
 		else:
@@ -92,14 +97,27 @@ func _physics_process(delta):
 			SPEED = speed_crouch
 		else:
 			SPEED = speed_normal
+			
+		if _jumped >= 1:
+			# Player hits floor after jump
+			Audio.play_sound_random(Sounds.list_land, 0.25)
+		elif _in_air == true:
+			Audio.play_sound_random(Sounds.list_land, 0.25)
+			_in_air = false
+		
 		_jumped = 0
 
-	# Handle ju mp.
+	# Handle jump.
 	if Input.is_action_just_pressed("jump") and !freeze:
 		if _jumped < max_jumps+Upgrades.extra_jumps():
 			velocity.y = JUMP_VELOCITY + (JUMP_VELOCITY_REDUCTION*_jumped)
 			_jumped += 1
 			Audio.play_sound_random(Sounds.list_jump,.45-(_jumped*0.1))
+			# Spawn Cloud Particles
+			var cloud : CPUParticles2D = jump_particles.instantiate()
+			get_parent().add_child(cloud)
+			cloud.one_shot = true
+			cloud.global_position = $"Jump Marker".global_position
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

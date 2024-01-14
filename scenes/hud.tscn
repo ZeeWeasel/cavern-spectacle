@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dt7in4o847p41"]
+[gd_scene load_steps=11 format=3 uid="uid://dt7in4o847p41"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_ywd7r"]
 [ext_resource type="PackedScene" uid="uid://2gajlyc8j2jk" path="res://scenes/juice_coin.tscn" id="2_ebxdq"]
 [ext_resource type="Texture2D" uid="uid://48chuq7juon" path="res://graphics/coin.png" id="2_hu60q"]
 [ext_resource type="Script" path="res://scripts/juice_coin.gd" id="2_t85u8"]
+[ext_resource type="Theme" uid="uid://bqi52p5nbj8qc" path="res://theme.tres" id="6_lr0wl"]
 [ext_resource type="Texture2D" uid="uid://dpjrgoue6kt0f" path="res://graphics/heart_player.png" id="6_pjhfm"]
 
 [sub_resource type="Animation" id="Animation_70sji"]
@@ -93,28 +94,28 @@ visible = false
 
 [node name="LabelCoins" type="Label" parent="."]
 anchors_preset = -1
-anchor_left = 0.885417
-anchor_top = 0.874074
-anchor_right = 0.972396
-anchor_bottom = 0.962963
+anchor_left = 0.892187
+anchor_top = 0.865278
+anchor_right = 0.979688
+anchor_bottom = 0.965278
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_font_sizes/font_size = 50
+theme = ExtResource("6_lr0wl")
+theme_override_font_sizes/font_size = 40
 text = "100"
-horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true
 
-[node name="CoinLabel" type="TextureRect" parent="."]
+[node name="Coin Texture Rect" type="TextureRect" parent="."]
 anchors_preset = -1
-anchor_left = 0.875521
-anchor_top = 0.892593
-anchor_right = 0.909375
-anchor_bottom = 0.95463
+anchor_left = 0.835938
+anchor_top = 0.876389
+anchor_right = 0.889063
+anchor_bottom = 0.970833
 texture = ExtResource("2_hu60q")
+expand_mode = 3
+stretch_mode = 4
 metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true
 
 [node name="CanvasLayer" parent="." instance=ExtResource("2_ebxdq")]
 
@@ -130,7 +131,8 @@ metadata/_edit_use_anchors_ = true
 [node name="HeartContainer" type="HBoxContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = -0.0294118
-anchor_right = 0.99759
-anchor_bottom = 0.990196
+anchor_left = 0.0146158
+anchor_top = 8.60599
+anchor_right = 1.01221
+anchor_bottom = 9.6256
 metadata/_edit_use_anchors_ = true

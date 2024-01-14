@@ -35,6 +35,11 @@ var snd_jump : AudioStream = preload('res://sounds/jump.wav')
 var snd_jump_2 : AudioStream = preload('res://sounds/jump_2.wav')
 var snd_jump_3 : AudioStream = preload('res://sounds/jump_3.wav')
 
+var snd_land_1 : AudioStream = preload('res://sounds/land_1.wav')
+var snd_land_2 : AudioStream = preload('res://sounds/land_2.wav')
+var snd_land_3 : AudioStream = preload('res://sounds/land_3.wav')
+var list_land : Array[AudioStream] = [snd_land_1, snd_land_2, snd_land_3]
+
 var snd_turret_shot : AudioStream = preload('res://sounds/turret_shot.wav')
 
 var list_jump : Array[AudioStream] = [snd_jump, snd_jump_2, snd_jump_3]

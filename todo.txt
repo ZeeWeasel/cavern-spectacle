@@ -1,12 +1,22 @@
 Nice To Have
 
-- Landing
+✔️ Game Won Screen Design
+✔️ Test Map_5 
+- More Maps
+- Redraw Heart
+- Landing Sound
+	- Little Particle Spray when hitting ground at certain magnitude
+	- Particle Effect Of Cloud When Jumping
 - Drop Hearts as Pickups with chance
 - Invincibility for a moment for player after damage
+- Music
+- Screenshots
+- Video Capture For Trailer
+- Make Player Explode
+- Explode Heart when Hit
+- Dialogue Manager?
 
 ✔️ Tunnel Tilemap in Transition Screen
-
-- Redraw Heart
 
 ✔️ Turret enemy
 	✔️ Fires at player
@@ -19,20 +29,9 @@ Nice To Have
 ✔️ Change Visuals and Collision Shape when crouching
 
 ✔️ Bat Attack Feedback
-- Make Player Explode
 - Vignette / Screen Effect when hit
-- Explode Heart when hit
 ✔️ Make Player Flash When Hit
-- Display Small Impact Particle From Gun On Enemy
-- Display Health Above Bat
-- Crosshair around the player
-- Little Particle Spray when hitting ground at certain magnitude
-- Particle Effect Of Cloud When Jumping
 - Bat Will Fold Up Wings If Sitting On Wall For A While
-- Optimize Map Generation when Level gets reloaded
-	
-- Create List Of Hit Tiles
-	- Only destroy them it tile has been hit x amount of times
 
 - Idea: Spawn Terrain Blobs When Pressing Right Button
 

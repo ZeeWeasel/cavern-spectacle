@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://b87p01q6wb0af"]
+[gd_scene load_steps=86 format=3 uid="uid://b87p01q6wb0af"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_qgxei"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="2_dshy4"]
@@ -40,9 +40,12 @@
 [ext_resource type="PackedScene" uid="uid://c6ftwpiaebryw" path="res://scenes/key.tscn" id="26_03yf6"]
 [ext_resource type="PackedScene" uid="uid://dgb13qkybfonc" path="res://scenes/player.tscn" id="27_dgrq3"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="28_hke7i"]
-[ext_resource type="PackedScene" uid="uid://dt7in4o847p41" path="res://scenes/hud.tscn" id="30_bo3hk"]
 [ext_resource type="Script" path="res://scripts/fade_in_fade_out.gd" id="31_p7c4x"]
+[ext_resource type="Script" path="res://scripts/hud.gd" id="39_coml4"]
+[ext_resource type="Script" path="res://scripts/juice_coin.gd" id="40_j6pe5"]
+[ext_resource type="Texture2D" uid="uid://dpjrgoue6kt0f" path="res://graphics/heart_player.png" id="41_hu0hm"]
 [ext_resource type="Script" path="res://scenes/pause.gd" id="41_p4sn0"]
+[ext_resource type="PackedScene" uid="uid://2gajlyc8j2jk" path="res://scenes/juice_coin.tscn" id="42_ktdtv"]
 [ext_resource type="Texture2D" uid="uid://3is8dtkeq1xs" path="res://graphics/twitch.png" id="44_pee2p"]
 
 [sub_resource type="Animation" id="Animation_l4lqj"]
@@ -350,6 +353,94 @@ _bundled = {
 "version": 3
 }
 
+[sub_resource type="Animation" id="Animation_70sji"]
+resource_name = "collect"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.193398, 0.241943, 0.38788),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1757, 1105), Vector2(1717, 910), Vector2(1706.14, 908.15), Vector2(1684, 966)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.38788),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.65, 0.65), Vector2(1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.406855),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ldny6"]
+_data = {
+"collect": SubResource("Animation_70sji")
+}
+
+[sub_resource type="PackedScene" id="PackedScene_oise6"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(2, 0, 19, 18, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("Juice Coin", "script", "CanvasLayer", "TextureRect", "anchors_preset", "anchor_left", "anchor_top", "anchor_right", "anchor_bottom", "offset_left", "offset_top", "offset_right", "offset_bottom", "scale", "texture", "metadata/_edit_use_anchors_", "AnimationPlayer", "libraries", "_on_animation_player_animation_finished", "animation_finished"),
+"node_count": 3,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 2, 0, -1, 1, 1, 0, 0, 0, 0, 3, 3, -1, 12, 4, 1, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 8, 12, 9, 13, 10, 14, 11, 15, 12, 0, 1, 0, 16, 16, -1, 1, 17, 13, 0),
+"variants": [ExtResource("40_j6pe5"), -1, 0.928646, 1.0037, 0.958333, 1.05833, -26.0004, 21.004, -26.0005, 21.0039, Vector2(0.65, 0.65), ExtResource("21_csovd"), true, {
+"": SubResource("AnimationLibrary_ldny6")
+}],
+"version": 3
+}
+
+[sub_resource type="PackedScene" id="PackedScene_lhd0l"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("PlayerHeartRect", "texture", "expand_mode", "TextureRect", "AnimationPlayer"),
+"node_count": 2,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 0, 0),
+"variants": [ExtResource("41_hu0hm"), 2],
+"version": 3
+}
+
+[sub_resource type="PackedScene" id="PackedScene_ph57b"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("HUD", "CanvasLayer", "script", "label_coins", "juice_coin_scene", "player_heart_rect", "heart_container", "JuiceCoin", "visible", "LabelCoins", "Label", "anchors_preset", "anchor_left", "anchor_top", "anchor_right", "anchor_bottom", "grow_horizontal", "grow_vertical", "theme_override_font_sizes/font_size", "text", "horizontal_alignment", "vertical_alignment", "metadata/_edit_use_anchors_", "metadata/_edit_lock_", "CoinLabel", "TextureRect", "anchors_preset", "anchor_left", "anchor_top", "anchor_right", "anchor_bottom", "texture", "metadata/_edit_use_anchors_", "metadata/_edit_lock_", "CanvasLayer", "Panel", "Panel", "self_modulate", "anchors_preset", "anchor_left", "anchor_top", "anchor_right", "anchor_bottom", "metadata/_edit_use_anchors_", "HeartContainer", "HBoxContainer", "layout_mode", "anchors_preset", "anchor_top", "anchor_right", "anchor_bottom", "metadata/_edit_use_anchors_"),
+"node_count": 7,
+"node_paths": [NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath("./Panel")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 5, 2, 0, 1073741827, 1, 4, 2, 5, 3, 1073741830, 4, 0, 1073741824, 0, 2147483647, 7, 5, 1, 8, 6, 0, 1073741825, 0, 10, 9, -1, 13, 11, 7, 12, 8, 13, 9, 14, 10, 15, 11, 16, 12, 17, 13, 18, 14, 19, 15, 20, 16, 21, 17, 22, 18, 23, 19, 0, 1073741826, 0, 25, 24, -1, 8, 26, 20, 27, 21, 28, 22, 29, 23, 30, 24, 31, 25, 32, 26, 33, 27, 0, 1073741827, 0, 2147483647, 34, 28, 0, 0, 1073741828, 0, 36, 35, -1, 7, 37, 29, 38, 30, 39, 31, 40, 32, 41, 33, 42, 34, 43, 35, 0, 1073741829, 0, 45, 44, -1, 6, 46, 36, 47, 37, 48, 38, 49, 39, 50, 40, 51, 41, 0),
+"variants": [ExtResource("39_coml4"), NodePath("LabelCoins"), SubResource("PackedScene_oise6"), SubResource("PackedScene_lhd0l"), NodePath("Panel/HeartContainer"), ExtResource("42_ktdtv"), false, -1, 0.885417, 0.874074, 0.972396, 0.962963, 0, 0, 50, "100", 1, 1, true, true, -1, 0.875521, 0.892593, 0.909375, 0.95463, ExtResource("21_csovd"), true, true, ExtResource("42_ktdtv"), Color(1, 1, 1, 0), -1, 0.0264942, 0.0511039, 0.458786, 0.145548, true, 1, -1, -0.0294118, 0.99759, 0.990196, true],
+"version": 3
+}
+
 [sub_resource type="Animation" id="Animation_jtk7o"]
 resource_name = "fade_from_black"
 tracks/0/type = "value"
@@ -447,7 +538,7 @@ _bundled = {
 "node_count": 10,
 "node_paths": [NodePath("."), NodePath("."), NodePath("."), NodePath("./Player"), NodePath("./Player/Camera2D"), NodePath("."), NodePath("./HUD"), NodePath("./HUD/FadeInOutOverlay"), NodePath(".")],
 "nodes": PackedInt32Array(-1, -1, 1, 0, -1, 8, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 1073741831, 5, 1073741832, 6, 9, 7, 0, 1073741824, 0, 11, 10, -1, 1, 12, 8, 0, 1073741825, 0, 2147483647, 13, 9, 6, 14, 10, 15, 11, 1073741840, 12, 1073741841, 13, 1073741842, 14, 19, 15, 0, 1073741826, 0, 2147483647, 20, 16, 3, 21, 17, 1073741846, 18, 1073741847, 19, 0, 1073741827, 0, 25, 24, -1, 8, 26, 20, 27, 21, 28, 22, 29, 23, 30, 24, 31, 25, 32, 26, 33, 27, 0, 1073741828, 0, 35, 34, -1, 7, 36, 28, 37, 29, 38, 30, 39, 31, 40, 32, 41, 33, 42, 34, 0, 1073741829, 0, 2147483647, 43, 35, 3, 44, 36, 1073741869, 37, 1073741870, 38, 0, 1073741830, 0, 48, 47, -1, 10, 49, 39, 50, 40, 51, 41, 52, 42, 53, 43, 54, 44, 55, 45, 56, 46, 57, 47, 58, 48, 0, 1073741831, 0, 60, 59, -1, 2, 61, 49, 62, 50, 0, 1073741832, 0, 2147483647, 63, 51, 0, 0),
-"variants": [1, ExtResource("2_dshy4"), SubResource("PackedScene_alc34"), SubResource("PackedScene_sc8gl"), ExtResource("5_sc4s7"), NodePath("HUD"), NodePath("HUD/FadeInOutOverlay"), SubResource("PackedScene_x0ymq"), 1, SubResource("PackedScene_3ik7b"), 1, Vector2(-5, 12), NodePath("MapReader"), NodePath("TileMap/Exit"), NodePath("Key"), true, ExtResource("27_dgrq3"), 1, NodePath("Gun"), NodePath("Player Sprite"), 1, Vector2(-1, -1), Vector2(3, 3), true, 3.0, 0.25, 0.0, ExtResource("28_hke7i"), 1, Color(0.0156863, 0.0470588, 0.0235294, 1), -10, Vector2(-2, 11), Vector2(500, 500), ExtResource("7_hkbl2"), true, ExtResource("30_bo3hk"), 1, NodePath("LabelCoins"), NodePath("Panel/HeartContainer"), 1, 15, 1.0, 1.0, 2, 2, Color(0, 0, 0, 0), ExtResource("31_p7c4x"), true, true, 1, {
+"variants": [1, ExtResource("2_dshy4"), SubResource("PackedScene_alc34"), SubResource("PackedScene_sc8gl"), ExtResource("5_sc4s7"), NodePath("HUD"), NodePath("HUD/FadeInOutOverlay"), SubResource("PackedScene_x0ymq"), 1, SubResource("PackedScene_3ik7b"), 1, Vector2(-5, 12), NodePath("MapReader"), NodePath("TileMap/Exit"), NodePath("Key"), true, ExtResource("27_dgrq3"), 1, NodePath("Gun"), NodePath("Player Sprite"), 1, Vector2(-1, -1), Vector2(3, 3), true, 3.0, 0.25, 0.0, ExtResource("28_hke7i"), 1, Color(0.0156863, 0.0470588, 0.0235294, 1), -10, Vector2(-2, 11), Vector2(500, 500), ExtResource("7_hkbl2"), true, SubResource("PackedScene_ph57b"), 1, NodePath("LabelCoins"), NodePath("Panel/HeartContainer"), 1, 15, 1.0, 1.0, 2, 2, Color(0, 0, 0, 0), ExtResource("31_p7c4x"), true, true, 1, {
 "": SubResource("AnimationLibrary_vvgmk")
 }, SubResource("PackedScene_wxwkb")],
 "version": 3
@@ -515,8 +606,9 @@ anchor_bottom = 0.316667
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("6_6qdqj")
-theme_override_font_sizes/font_size = 15
-text = "by Zee Weasel"
+theme_override_font_sizes/font_size = 22
+text = "@ZeeWeasel"
+horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Twitch" type="Sprite2D" parent="CanvasLayer"]

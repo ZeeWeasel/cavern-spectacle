@@ -11,17 +11,16 @@ config_version=5
 [application]
 
 config/name="Cavern Spectacle"
-config/version="1.0"
+config/version="1.0.1"
 run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3")
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 run/size/initial_position_type=0
 
 [autoload]
 
 Globals="*res://scripts/globals.gd"
 EventBus="*res://scripts/eventbus.gd"
-DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 Upgrades="*res://scripts/upgrades.gd"
 Audio="*res://scripts/audio.gd"
 Sounds="*res://scripts/sounds.gd"
@@ -32,9 +31,10 @@ window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 
-[editor_plugins]
+[editor]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
+movie_writer/mjpeg_quality=1.0
+movie_writer/movie_file="E:/GIT/cave-spectacle/recordings/video.avi"
 
 [file_customization]
 

@@ -108,4 +108,7 @@ position = Vector2(12, -2)
 [node name="Hit Timer" type="Timer" parent="."]
 wait_time = 0.15
 
+[node name="Jump Marker" type="Marker2D" parent="."]
+position = Vector2(-0.35, 4.65)
+
 [connection signal="timeout" from="Hit Timer" to="." method="_on_hit_timer_timeout"]

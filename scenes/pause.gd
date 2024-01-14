@@ -11,7 +11,8 @@ func _process(_delta):
 		if paused:
 			resume_game()
 		else: 
-			pause_game()
+			if Globals.hit_points_player > 0:
+				pause_game()
 
 func pause_game():
 	paused = true

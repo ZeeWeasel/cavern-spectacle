@@ -34,7 +34,7 @@ process_mode = 3
 
 [node name="Twitch" type="Sprite2D" parent="Pause Overlay"]
 z_index = 10
-position = Vector2(672, 569.102)
+position = Vector2(672, 586)
 scale = Vector2(7.40384, 7.40385)
 texture = ExtResource("2_6jvbf")
 
@@ -57,18 +57,29 @@ offset_right = -61.5468
 offset_bottom = 32.9497
 metadata/_edit_use_anchors_ = true
 
+[node name="Label Twitch Name" type="Label" parent="Pause Overlay"]
+z_index = 1
+anchors_preset = -1
+anchor_left = 0.373437
+anchor_top = 0.915278
+anchor_right = 0.669531
+anchor_bottom = 0.991667
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_fxohk")
+theme_override_font_sizes/font_size = 15
+text = "@ZeeWeasel"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="Panel Controls" type="Panel" parent="Pause Overlay"]
 self_modulate = Color(1, 1, 1, 0)
 z_index = 1
 anchors_preset = -1
-anchor_left = 0.738281
-anchor_top = 0.6375
-anchor_right = 0.976563
-anchor_bottom = 0.961111
-offset_left = 4.0
-offset_top = 1.0
-offset_right = 4.0
-offset_bottom = 1.0
+anchor_left = 0.734375
+anchor_top = 0.331944
+anchor_right = 0.972657
+anchor_bottom = 0.655555
 metadata/_edit_use_anchors_ = true
 
 [node name="Label Title Controls" type="Label" parent="Pause Overlay/Panel Controls"]

@@ -16,7 +16,7 @@ extends RigidBody2D
 
 var _timer_attacking : float = 0.0
 
-@export var detection_range : float = 300
+@export var detection_range : float = 150
 
 var is_attacking : bool = false
 var _distance_to_player : float
@@ -105,7 +105,7 @@ func update_ammo_indicator():
 func attack_player(delta):
 	rotate_barrel_toward(Globals.player.global_position, delta)
 	
-	if not check_player_visible():
+	if !check_player_visible() or !check_player_nearby():
 		_timer_attacking += delta
 		if _timer_attacking > time_until_stop_chasing:
 			is_attacking = false

@@ -14,8 +14,8 @@ var map_list : Array[String] = [
 	"res://maps/map_5.png"
 	]
 
-@export var transition_scene : PackedScene
-@export var game_won_scene : PackedScene
+@export_file("*.tscn") var transition_scene : String = "res://scenes/transition_scene.tscn"
+@export_file("*.tscn") var game_won_scene : String = "res://scenes/game_won.tscn"
 
 @export var player_max_health: int = 5
 @export var player_start_health : int = 5
@@ -122,14 +122,14 @@ func _on_fade_complete():
 		if map_list.find(Globals.current_map)+1 == map_list.size():
 			game_won()
 		else:
-			get_tree().change_scene_to_packed(transition_scene)
+			get_tree().change_scene_to_file(transition_scene)
 	
 	if fade_enter:
 		fade_enter = false
 		print("Fade In Finished")
 		
 func game_won():
-	get_tree().change_scene_to_packed(game_won_scene)
+	get_tree().change_scene_to_file(game_won_scene)
 					
 @export var gun_item : PackedScene
 
