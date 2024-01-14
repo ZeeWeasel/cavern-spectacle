@@ -1,0 +1,210 @@
+[gd_scene load_steps=18 format=3 uid="uid://8q68mjkpr4h"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_1kk23"]
+[ext_resource type="PackedScene" uid="uid://cfnaeo2wj683m" path="res://scenes/level.tscn" id="1_37nmh"]
+[ext_resource type="PackedScene" uid="uid://bnddpi4sbg6r1" path="res://transition_scene.tscn" id="2_4gf37"]
+[ext_resource type="PackedScene" uid="uid://dgb13qkybfonc" path="res://scenes/player.tscn" id="2_secic"]
+[ext_resource type="PackedScene" uid="uid://bvqgwanibjf1h" path="res://scenes/hud_death.tscn" id="3_rkar1"]
+[ext_resource type="Texture2D" uid="uid://bsbv7x2korypf" path="res://graphics/particle_square.png" id="4_6gaa1"]
+[ext_resource type="Script" path="res://scripts/gun_item.gd" id="4_160tp"]
+[ext_resource type="Texture2D" uid="uid://b22twkhqwpr5b" path="res://graphics/gun.png" id="5_6cn6q"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="5_vloeo"]
+[ext_resource type="Script" path="res://scripts/fade_in_fade_out.gd" id="9_k60gs"]
+[ext_resource type="PackedScene" uid="uid://dt7in4o847p41" path="res://scenes/hud.tscn" id="10_fu2x8"]
+[ext_resource type="Script" path="res://scenes/pause.gd" id="12_h15o4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kwsie"]
+radius = 7.0
+
+[sub_resource type="PackedScene" id="PackedScene_x0ymq"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(1073741828, 1073741827, 16, 15, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("Gun Item", "Node2D", "script", "Area2D", "Area2D", "collision_layer", "collision_mask", "CollisionShape2D", "CollisionShape2D", "position", "shape", "Sprite2D", "Sprite2D", "position", "texture", "_on_area_2d_body_entered", "body_entered"),
+"node_count": 4,
+"node_paths": [NodePath("."), NodePath("./Area2D"), NodePath("."), NodePath("."), NodePath("Area2D")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 1, 2, 0, 0, 1073741824, 0, 4, 3, -1, 2, 5, 1, 6, 2, 0, 1073741825, 0, 8, 7, -1, 2, 9, 3, 10, 4, 0, 1073741826, 0, 12, 11, -1, 2, 13, 5, 14, 6, 0),
+"variants": [ExtResource("4_160tp"), 32, 2, Vector2(-1, 0), SubResource("CircleShape2D_kwsie"), Vector2(2, 0), ExtResource("5_6cn6q")],
+"version": 3
+}
+
+[sub_resource type="Animation" id="Animation_jtk7o"]
+resource_name = "fade_from_black"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fade_complete"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_vf4le"]
+resource_name = "fade_to_black"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fade_complete"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vvgmk"]
+_data = {
+"fade_from_black": SubResource("Animation_jtk7o"),
+"fade_to_black": SubResource("Animation_vf4le")
+}
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("hud", "fade_in_fade_out")]
+process_mode = 1
+script = ExtResource("1_1kk23")
+transition_scene = ExtResource("2_4gf37")
+hud_death = ExtResource("3_rkar1")
+hud = NodePath("HUD")
+fade_in_fade_out = NodePath("HUD/FadeInOutOverlay")
+gun_item = SubResource("PackedScene_x0ymq")
+
+[node name="Bullets" type="Node2D" parent="."]
+process_mode = 1
+
+[node name="Level" parent="." node_paths=PackedStringArray("map", "exit", "key") instance=ExtResource("1_37nmh")]
+process_mode = 1
+position = Vector2(-5, 12)
+map = NodePath("MapReader")
+exit = NodePath("TileMap/Exit")
+key = NodePath("Key")
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." node_paths=PackedStringArray("gun", "player_sprite") instance=ExtResource("2_secic")]
+process_mode = 1
+gun = NodePath("Gun")
+player_sprite = NodePath("Player Sprite")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+process_mode = 1
+position = Vector2(-1, -1)
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+drag_top_margin = 0.25
+drag_bottom_margin = 0.0
+script = ExtResource("5_vloeo")
+
+[node name="Background" type="Sprite2D" parent="Player/Camera2D"]
+process_mode = 1
+modulate = Color(0.0156863, 0.0470588, 0.0235294, 1)
+z_index = -10
+position = Vector2(-2, 11)
+scale = Vector2(500, 500)
+texture = ExtResource("4_6gaa1")
+metadata/_edit_lock_ = true
+
+[node name="HUD" parent="." node_paths=PackedStringArray("label_coins", "heart_container") instance=ExtResource("10_fu2x8")]
+process_mode = 1
+label_coins = NodePath("LabelCoins")
+heart_container = NodePath("Panel/HeartContainer")
+
+[node name="FadeInOutOverlay" type="ColorRect" parent="HUD"]
+process_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+script = ExtResource("9_k60gs")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/FadeInOutOverlay"]
+process_mode = 1
+libraries = {
+"": SubResource("AnimationLibrary_vvgmk")
+}
+
+[node name="PauseLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+
+[node name="Panel" type="Panel" parent="PauseLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Button Restart" type="Button" parent="PauseLayer/Panel"]
+layout_mode = 0
+anchor_left = 0.38125
+anchor_top = 0.3375
+anchor_right = 0.660156
+anchor_bottom = 0.484722
+text = "Restart Level"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button Resume" type="Button" parent="PauseLayer/Panel"]
+layout_mode = 0
+anchor_left = 0.379687
+anchor_top = 0.523611
+anchor_right = 0.658594
+anchor_bottom = 0.670833
+text = "Resume"
+metadata/_edit_use_anchors_ = true
+
+[node name="Pause" type="Node2D" parent="."]
+process_mode = 3
+script = ExtResource("12_h15o4")
+
+[connection signal="pressed" from="PauseLayer/Panel/Button Restart" to="Pause" method="_on_button_restart_pressed"]
+[connection signal="pressed" from="PauseLayer/Panel/Button Resume" to="Pause" method="_on_button_resume_pressed"]

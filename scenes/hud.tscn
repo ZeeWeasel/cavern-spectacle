@@ -1,0 +1,136 @@
+[gd_scene load_steps=10 format=3 uid="uid://dt7in4o847p41"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_ywd7r"]
+[ext_resource type="PackedScene" uid="uid://2gajlyc8j2jk" path="res://scenes/juice_coin.tscn" id="2_ebxdq"]
+[ext_resource type="Texture2D" uid="uid://48chuq7juon" path="res://graphics/coin.png" id="2_hu60q"]
+[ext_resource type="Script" path="res://scripts/juice_coin.gd" id="2_t85u8"]
+[ext_resource type="Texture2D" uid="uid://dpjrgoue6kt0f" path="res://graphics/heart_player.png" id="6_pjhfm"]
+
+[sub_resource type="Animation" id="Animation_70sji"]
+resource_name = "collect"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.193398, 0.241943, 0.38788),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1757, 1105), Vector2(1717, 910), Vector2(1706.14, 908.15), Vector2(1684, 966)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.38788),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.65, 0.65), Vector2(1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.406855),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ldny6"]
+_data = {
+"collect": SubResource("Animation_70sji")
+}
+
+[sub_resource type="PackedScene" id="PackedScene_oise6"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(2, 0, 19, 18, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("Juice Coin", "script", "CanvasLayer", "TextureRect", "anchors_preset", "anchor_left", "anchor_top", "anchor_right", "anchor_bottom", "offset_left", "offset_top", "offset_right", "offset_bottom", "scale", "texture", "metadata/_edit_use_anchors_", "AnimationPlayer", "libraries", "_on_animation_player_animation_finished", "animation_finished"),
+"node_count": 3,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 2, 0, -1, 1, 1, 0, 0, 0, 0, 3, 3, -1, 12, 4, 1, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 8, 12, 9, 13, 10, 14, 11, 15, 12, 0, 1, 0, 16, 16, -1, 1, 17, 13, 0),
+"variants": [ExtResource("2_t85u8"), -1, 0.928646, 1.0037, 0.958333, 1.05833, -26.0004, 21.004, -26.0005, 21.0039, Vector2(0.65, 0.65), ExtResource("2_hu60q"), true, {
+"": SubResource("AnimationLibrary_ldny6")
+}],
+"version": 3
+}
+
+[sub_resource type="PackedScene" id="PackedScene_lhd0l"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("PlayerHeartRect", "texture", "expand_mode", "TextureRect", "AnimationPlayer"),
+"node_count": 2,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 3, 0, -1, 2, 1, 0, 2, 1, 0, 0, 0, 4, 4, -1, 0, 0),
+"variants": [ExtResource("6_pjhfm"), 2],
+"version": 3
+}
+
+[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("label_coins", "heart_container")]
+script = ExtResource("1_ywd7r")
+label_coins = NodePath("LabelCoins")
+juice_coin_scene = SubResource("PackedScene_oise6")
+player_heart_rect = SubResource("PackedScene_lhd0l")
+heart_container = NodePath("Panel/HeartContainer")
+
+[node name="JuiceCoin" parent="." instance=ExtResource("2_ebxdq")]
+visible = false
+
+[node name="LabelCoins" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.885417
+anchor_top = 0.874074
+anchor_right = 0.972396
+anchor_bottom = 0.962963
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="CoinLabel" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_left = 0.875521
+anchor_top = 0.892593
+anchor_right = 0.909375
+anchor_bottom = 0.95463
+texture = ExtResource("2_hu60q")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" parent="." instance=ExtResource("2_ebxdq")]
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.0264942
+anchor_top = 0.0511039
+anchor_right = 0.458786
+anchor_bottom = 0.145548
+metadata/_edit_use_anchors_ = true
+
+[node name="HeartContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.0294118
+anchor_right = 0.99759
+anchor_bottom = 0.990196
+metadata/_edit_use_anchors_ = true

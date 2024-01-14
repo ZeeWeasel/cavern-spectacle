@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://bqiq1lnlmaah"
+path="res://.godot/imported/map_2.png-fc1b2b627def7aadfc597e3f1762dac3.image"
+
+[deps]
+
+source_file="res://maps/map_2.png"
+dest_files=["res://.godot/imported/map_2.png-fc1b2b627def7aadfc597e3f1762dac3.image"]
+
+[params]
+

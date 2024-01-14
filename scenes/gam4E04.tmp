@@ -1,0 +1,59 @@
+[gd_scene load_steps=11 format=3 uid="uid://8q68mjkpr4h"]
+
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_1kk23"]
+[ext_resource type="PackedScene" uid="uid://cfnaeo2wj683m" path="res://scenes/level.tscn" id="1_37nmh"]
+[ext_resource type="Texture2D" uid="uid://b5c32olklti4q" path="res://maps/map_test.png" id="2_p3i3o"]
+[ext_resource type="Texture2D" uid="uid://dstvqysuffom4" path="res://maps/map_0_tutorial.png" id="2_s6aw5"]
+[ext_resource type="PackedScene" uid="uid://dgb13qkybfonc" path="res://scenes/player.tscn" id="2_secic"]
+[ext_resource type="Texture2D" uid="uid://c66sk6fcfpc7c" path="res://maps/map_1.png" id="3_ldmer"]
+[ext_resource type="Texture2D" uid="uid://bsbv7x2korypf" path="res://graphics/particle_square.png" id="4_6gaa1"]
+[ext_resource type="Script" path="res://transition_scene.gd" id="5_78j8t"]
+[ext_resource type="Script" path="res://scenes/Camera2D.gd" id="5_vloeo"]
+
+[sub_resource type="PackedScene" id="PackedScene_ghqsk"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(1073741826, 1073741825, 22, 21, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("TransitionScene", "Control", "layout_mode", "anchors_preset", "offset_left", "offset_top", "offset_right", "offset_bottom", "script", "Next Level", "Button", "layout_mode", "anchors_preset", "anchor_left", "anchor_top", "anchor_right", "anchor_bottom", "grow_horizontal", "grow_vertical", "text", "metadata/_edit_use_anchors_", "_on_next_level_button_up", "button_up"),
+"node_count": 2,
+"node_paths": [NodePath("."), NodePath("."), NodePath("Next Level")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 7, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 0, 1073741824, 0, 10, 9, -1, 10, 11, 7, 12, 8, 13, 9, 14, 10, 15, 11, 16, 12, 17, 13, 18, 14, 19, 15, 20, 16, 0),
+"variants": [3, 0, 1308.0, 322.0, 1348.0, 362.0, ExtResource("5_78j8t"), 1, -1, -10.675, 2.6, -4.225, 6.625, 2, 2, "Next Level", true],
+"version": 3
+}
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("level", "player")]
+script = ExtResource("1_1kk23")
+level = NodePath("Level")
+player = NodePath("Player")
+map_list = Array[Texture]([ExtResource("2_s6aw5"), ExtResource("3_ldmer"), ExtResource("2_p3i3o")])
+transition_scene = SubResource("PackedScene_ghqsk")
+
+[node name="Bullets" type="Node2D" parent="."]
+
+[node name="Level" parent="." node_paths=PackedStringArray("map", "exit", "key") instance=ExtResource("1_37nmh")]
+position = Vector2(-5, 12)
+map = NodePath("MapReader")
+exit = NodePath("TileMap/Exit")
+key = NodePath("Key")
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." node_paths=PackedStringArray("gun") instance=ExtResource("2_secic")]
+gun = NodePath("Gun")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-1, -1)
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+drag_top_margin = 0.25
+drag_bottom_margin = 0.0
+script = ExtResource("5_vloeo")
+
+[node name="Background" type="Sprite2D" parent="Player/Camera2D"]
+modulate = Color(0.0156863, 0.0470588, 0.0235294, 1)
+z_index = -10
+position = Vector2(-2, 11)
+scale = Vector2(500, 500)
+texture = ExtResource("4_6gaa1")

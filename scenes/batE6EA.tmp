@@ -1,0 +1,150 @@
+[gd_scene load_steps=10 format=3 uid="uid://bdnrulx4y1ssd"]
+
+[ext_resource type="Texture2D" uid="uid://dvmt2x8qnbtsr" path="res://graphics/bat_wing_left.png" id="1_gtj6m"]
+[ext_resource type="Script" path="res://scenes/bat_new.gd" id="1_rr4g7"]
+[ext_resource type="PackedScene" uid="uid://bs1fr30n54jbs" path="res://scenes/bat_death.tscn" id="2_4qhoi"]
+[ext_resource type="Texture2D" uid="uid://dn7gwrlifsi17" path="res://graphics/bat_wing_right.png" id="2_xh8mj"]
+[ext_resource type="Texture2D" uid="uid://dpafdxhv0jv1f" path="res://graphics/bat_head.png" id="3_loug7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dfxjm"]
+radius = 4.2864
+height = 28.3292
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mm7wu"]
+radius = 3.89481
+
+[sub_resource type="Animation" id="Animation_l4lqj"]
+resource_name = "flying"
+length = 0.2
+loop_mode = 2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BatWingLeft:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.167355),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.562171]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BatWingLeft:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.16415e-10, 0.167355),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-8.35298, -1.11388), Vector2(-7.33451, 2.86885)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BatWingLeft:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.167355),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.940963, 0.665722)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BatWingRight:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.167355),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(8.19363, -0.741478), Vector2(6.68328, 3.86079)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BatWingRight:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.167355),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.701792]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BatWingRight:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.167355),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.828086)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f7r88"]
+_data = {
+"flying": SubResource("Animation_l4lqj")
+}
+
+[node name="Bat New" type="CharacterBody2D" node_paths=PackedStringArray("line2d")]
+position = Vector2(0.00489426, -0.00634766)
+collision_layer = 4
+collision_mask = 69
+script = ExtResource("1_rr4g7")
+line2d = NodePath("Line2D")
+bat_death = ExtResource("2_4qhoi")
+
+[node name="Hitbox" type="Area2D" parent="."]
+disable_mode = 2
+collision_layer = 4
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0.147744, -0.884486)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_dfxjm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.307636, -0.207963)
+scale = Vector2(0.705376, 0.732638)
+shape = SubResource("CircleShape2D_mm7wu")
+
+[node name="BatWingLeft" type="Sprite2D" parent="."]
+position = Vector2(-8.35298, -1.11388)
+texture = ExtResource("1_gtj6m")
+metadata/_edit_lock_ = true
+
+[node name="BatWingRight" type="Sprite2D" parent="."]
+position = Vector2(8.19363, -0.741478)
+texture = ExtResource("2_xh8mj")
+metadata/_edit_lock_ = true
+
+[node name="BatHead" type="Sprite2D" parent="."]
+position = Vector2(-0.0867774, -0.467628)
+scale = Vector2(0.61446, 0.556876)
+texture = ExtResource("3_loug7")
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f7r88")
+}
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 0)
+collision_mask = 3
+
+[node name="Line2D" type="Line2D" parent="."]
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]

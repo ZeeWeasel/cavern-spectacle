@@ -1,0 +1,270 @@
+[gd_scene load_steps=38 format=3 uid="uid://cfnaeo2wj683m"]
+
+[ext_resource type="Texture2D" uid="uid://bkqvfn80hl560" path="res://graphics/ground.png" id="1_1it46"]
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_uc80v"]
+[ext_resource type="Shader" path="res://scripts/empty.gdshader" id="1_vw0yg"]
+[ext_resource type="PackedScene" uid="uid://l240ikagrlxo" path="res://scenes/exit.tscn" id="2_05jc8"]
+[ext_resource type="PackedScene" uid="uid://bksmtsfj4ka32" path="res://scenes/ground_piece.tscn" id="3_qky72"]
+[ext_resource type="Texture2D" uid="uid://dh7t7tuvidgdb" path="res://graphics/border.png" id="3_v1van"]
+[ext_resource type="Script" path="res://scripts/map_reader.gd" id="4_k7ss3"]
+[ext_resource type="PackedScene" uid="uid://bdnrulx4y1ssd" path="res://scenes/bat.tscn" id="4_nihq1"]
+[ext_resource type="Script" path="res://scripts/enemy_turret.gd" id="5_ylx2l"]
+[ext_resource type="PackedScene" uid="uid://c6ftwpiaebryw" path="res://scenes/key.tscn" id="6_cfurd"]
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="6_mr1be"]
+[ext_resource type="Script" path="res://scripts/smoother.gd" id="7_53x77"]
+[ext_resource type="Texture2D" uid="uid://6os3igme6tms" path="res://graphics/shot.png" id="8_sdgu3"]
+[ext_resource type="PackedScene" uid="uid://5eub6mawqxb2" path="res://scenes/turret_death.tscn" id="9_6d53j"]
+[ext_resource type="Script" path="res://scripts/coin.gd" id="10_7652u"]
+[ext_resource type="Texture2D" uid="uid://48chuq7juon" path="res://graphics/coin.png" id="11_ghoka"]
+[ext_resource type="Texture2D" uid="uid://crfggggrs5wcj" path="res://graphics/turret_tank_bottom.png" id="11_rgr3i"]
+[ext_resource type="Texture2D" uid="uid://ra8tk0c843iw" path="res://graphics/turret_barrel.png" id="12_8l8k5"]
+[ext_resource type="Texture2D" uid="uid://33wvjlrbagl3" path="res://graphics/turret_tank_top.png" id="13_5pltk"]
+[ext_resource type="PackedScene" uid="uid://beq6mudofmh5g" path="res://scenes/diamond.tscn" id="14_li148"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ynhu"]
+shader = ExtResource("1_vw0yg")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ux82"]
+size = Vector2(2, 2)
+
+[sub_resource type="PackedScene" id="PackedScene_802lc"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(1073741828, 1073741827, 22, 21, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("Bullet Turret", "RigidBody2D", "collision_layer", "collision_mask", "gravity_scale", "continuous_cd", "max_contacts_reported", "contact_monitor", "linear_damp_mode", "script", "Smoother", "Node", "script", "Sprite2D", "Sprite2D", "self_modulate", "scale", "texture", "CollisionShape2D", "CollisionShape2D", "shape", "_on_body_entered", "body_entered"),
+"node_count": 4,
+"node_paths": [NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 8, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 0, 1073741824, 0, 11, 10, -1, 1, 12, 8, 0, 1073741825, 0, 14, 13, -1, 3, 15, 9, 16, 10, 17, 11, 0, 1073741826, 0, 19, 18, -1, 1, 20, 12, 0),
+"variants": [8, 71, 0.0, 2, 2, true, 1, ExtResource("6_mr1be"), ExtResource("7_53x77"), Color(1, 0.0627451, 0.0627451, 1), Vector2(1.5625, 1.5625), ExtResource("8_sdgu3"), SubResource("RectangleShape2D_3ux82")],
+"version": 3
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ufmmn"]
+size = Vector2(2, 2)
+
+[sub_resource type="PackedScene" id="PackedScene_suhqn"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(1073741828, 1073741827, 20, 19, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("Bullet", "RigidBody2D", "collision_layer", "collision_mask", "gravity_scale", "continuous_cd", "max_contacts_reported", "contact_monitor", "script", "Smoother", "Node", "script", "Sprite2D", "Sprite2D", "scale", "texture", "CollisionShape2D", "CollisionShape2D", "shape", "_on_body_entered", "body_entered"),
+"node_count": 4,
+"node_paths": [NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 7, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 0, 1073741824, 0, 10, 9, -1, 1, 11, 7, 0, 1073741825, 0, 13, 12, -1, 2, 14, 8, 15, 9, 0, 1073741826, 0, 17, 16, -1, 1, 18, 10, 0),
+"variants": [8, 5, 0.0, 2, 2, true, ExtResource("6_mr1be"), ExtResource("7_53x77"), Vector2(1.5625, 1.5625), ExtResource("8_sdgu3"), SubResource("RectangleShape2D_ufmmn")],
+"version": 3
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vmv6a"]
+radius = 6.09007
+
+[sub_resource type="PackedScene" id="PackedScene_11hq1"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Coin", "RigidBody2D", "collision_layer", "collision_mask", "gravity_scale", "can_sleep", "continuous_cd", "script", "CoinSprite", "Sprite2D", "texture", "CollisionShape2D", "CollisionShape2D", "position", "shape"),
+"node_count": 3,
+"node_paths": [NodePath("."), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 6, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 0, 1073741824, 0, 9, 8, -1, 1, 10, 6, 0, 1073741825, 0, 12, 11, -1, 2, 13, 7, 14, 8, 0),
+"variants": [32, 35, 0.4, false, 1, ExtResource("10_7652u"), ExtResource("11_ghoka"), Vector2(-1.1622, -1.19055), SubResource("CircleShape2D_vmv6a")],
+"version": 3
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n5hef"]
+radius = 8.0
+
+[sub_resource type="Gradient" id="Gradient_5kqm5"]
+colors = PackedColorArray(0.745098, 0.862745, 0.498039, 1, 0.745098, 0.862745, 0.498039, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l23rq"]
+gradient = SubResource("Gradient_5kqm5")
+
+[sub_resource type="Animation" id="Animation_p1wuh"]
+resource_name = "ammo_state"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-0.00244141, 0.15625), Vector2(0.15625, 0.15625)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-5, 5), Vector2(-5, 5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vfrbb"]
+_data = {
+"ammo_state": SubResource("Animation_p1wuh")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ewa6c"]
+radius = 9.0
+
+[sub_resource type="PackedScene" id="PackedScene_gkeax"]
+_bundled = {
+"conn_count": 2,
+"conns": PackedInt32Array(9, 0, 40, 39, 2, 0, 0, 12, 0, 42, 41, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("Enemy Turret", "collision_layer", "collision_mask", "can_sleep", "freeze", "continuous_cd", "script", "bullet", "shot_speed", "turret_death", "bullet_turret", "coin", "shot_interval", "RigidBody2D", "CollisionShape2D", "shape", "Sprite Tank Bottom", "texture", "Sprite2D", "Barrel", "Node2D", "Sprite Barrel", "rotation", "Marker2D", "position", "Sprite Tank Top", "z_index", "Ammo Indicator", "scale", "centered", "AnimationPlayer", "libraries", "Hitbox", "Area2D", "RayCast2D", "target_position", "Hit Timer", "wait_time", "Timer", "_on_hitbox_body_entered", "body_entered", "_on_hit_timer_timeout", "timeout"),
+"node_count": 13,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 13, 0, -1, 12, 1, 0, 2, 1, 3, 2, 4, 3, 5, 4, 6, 5, 7, 6, 8, 7, 9, 8, 10, 9, 11, 10, 12, 11, 0, 0, 0, 14, 14, -1, 1, 15, 12, 0, 0, 0, 18, 16, -1, 1, 17, 13, 0, 0, 0, 20, 19, -1, 0, 0, 3, 0, 18, 21, -1, 2, 22, 14, 17, 15, 0, 4, 0, 23, 23, -1, 1, 24, 16, 0, 0, 0, 18, 25, -1, 2, 26, 4, 17, 17, 0, 0, 0, 18, 27, -1, 5, 24, 18, 22, 19, 28, 20, 17, 21, 29, 2, 0, 7, 0, 30, 30, -1, 1, 31, 22, 0, 0, 0, 33, 32, -1, 2, 1, 0, 2, 23, 0, 9, 0, 14, 14, -1, 1, 15, 24, 0, 0, 0, 34, 34, -1, 2, 35, 25, 2, 26, 0, 0, 0, 38, 36, -1, 1, 37, 27, 0),
+"variants": [4, 66, false, true, 1, ExtResource("5_ylx2l"), SubResource("PackedScene_802lc"), 500.0, ExtResource("9_6d53j"), SubResource("PackedScene_suhqn"), SubResource("PackedScene_11hq1"), 0.25, SubResource("CircleShape2D_n5hef"), ExtResource("11_rgr3i"), 1.5708, ExtResource("12_8l8k5"), Vector2(0, -15), ExtResource("13_5pltk"), Vector2(-5, 5), -1.5708, Vector2(-0.00244141, 0.15625), SubResource("GradientTexture2D_l23rq"), {
+"": SubResource("AnimationLibrary_vfrbb")
+}, 8, SubResource("CircleShape2D_ewa6c"), Vector2(0, 0), 67, 0.15],
+"version": 3
+}
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_54pcd"]
+resource_name = "walls"
+texture = ExtResource("1_1it46")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2, 3, 1.5, -1, 8, -1, 8, 8, -2, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -1, 0.5, -1, 6, -1, 8, -1, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.5, -1, 3, 2, 3, 8, 1, 8, -8, 8, -8, -1)
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 2, 6, 2, 4.5, 3.5, 3, 6, 3, 8, -8, 8, -8, -8, 8, -8)
+4:0/0 = 0
+4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:0/0/physics_layer_0/angular_velocity = 0.0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 2, -0.5, 2, -6, 2, -8, 2, -8, -8, 8, -8)
+5:0/0 = 0
+5:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:0/0/physics_layer_0/angular_velocity = 0.0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2, 8, -2, 6, -3, 4, -5, 2.5, -8, 2, -8, -8, 8, -8, 8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2, 8, -2, -0.5, -2, -6, -2, -8, 8, -8, 8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(3, -8, 2.5, 0.5, 3, 6, 3, 8, -8, 8, -8, -8)
+3:1/0 = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(3, -8, 3, 0.5, 3, 6, 3, 8, -8, 8, -8, -8)
+5:1/0 = 0
+5:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:1/0/physics_layer_0/angular_velocity = 0.0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2, 8, -2, -0.5, -2, -6, -2, -8, 8, -8, 8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(2, 2, -2, -1.5, -2, -8, -1, -8, 8, -8, 8, 2)
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 2, -1.5, 2, -8, 2, -8, 1, -8, -8, 8, -8)
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(2, -2, -1.5, 2, -8, 2, -8, 1, -8, -8, 2, -8)
+3:2/0 = 0
+3:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:2/0/physics_layer_0/angular_velocity = 0.0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(3, -8, 4, -3, 6.5, -1, 8, -1, 8, 8, -8, 8, -8, -8)
+4:2/0 = 0
+4:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:2/0/physics_layer_0/angular_velocity = 0.0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -1, -3, -1, 4.5, -1, 8, -1, 8, 8, -8, 8)
+5:2/0 = 0
+5:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:2/0/physics_layer_0/angular_velocity = 0.0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -1, -6, -1.5, -4, -3, -2.5, -5, -2, -8, 8, -8, 8, 8, -8, 8)
+4:1/0 = 0
+4:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:1/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_di63a"]
+resource_name = "border"
+texture = ExtResource("3_v1van")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_38cm3"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 14
+sources/0 = SubResource("TileSetAtlasSource_54pcd")
+sources/1 = SubResource("TileSetAtlasSource_di63a")
+
+[node name="Level" type="Node2D" node_paths=PackedStringArray("map", "exit", "key")]
+material = SubResource("ShaderMaterial_6ynhu")
+script = ExtResource("1_uc80v")
+map = NodePath("MapReader")
+exit = NodePath("TileMap/Exit")
+key = NodePath("Key")
+ground_piece = ExtResource("3_qky72")
+enemy_bats = ExtResource("4_nihq1")
+enemy_turret = SubResource("PackedScene_gkeax")
+diamond = ExtResource("14_li148")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_38cm3")
+format = 2
+layer_0/name = "walls"
+layer_0/tile_data = PackedInt32Array(-65538, 65536, 1, -2, 65536, 1, 65534, 65536, 1, -65537, 131072, 1, -1, 196608, 2, 65535, 65536, 1, -65536, 65536, 0, 0, 65536, 1, -65535, 65536, 0, 1, 65536, 1, -65534, 65536, 0, 2, 65536, 1, -131069, 262144, 1, -65533, 262144, 2, 3, 65536, 1)
+layer_1/name = "border"
+layer_1/tile_data = PackedInt32Array()
+
+[node name="Exit" parent="TileMap" node_paths=PackedStringArray("lock") instance=ExtResource("2_05jc8")]
+lock = NodePath("Door/Lock")
+
+[node name="MapReader" type="Node" parent="."]
+script = ExtResource("4_k7ss3")
+
+[node name="Key" parent="." instance=ExtResource("6_cfurd")]

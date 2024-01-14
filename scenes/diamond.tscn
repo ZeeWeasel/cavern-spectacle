@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://beq6mudofmh5g"]
+
+[ext_resource type="Script" path="res://scripts/diamond.gd" id="1_qgr8n"]
+[ext_resource type="Texture2D" uid="uid://b7p0gco4r7036" path="res://graphics/diamond.png" id="2_aa736"]
+
+[node name="Diamond" type="RigidBody2D"]
+collision_layer = 32
+collision_mask = 35
+mass = 5.0
+gravity_scale = 0.25
+can_sleep = false
+continuous_cd = 2
+script = ExtResource("1_qgr8n")
+metadata/_edit_lock_ = true
+
+[node name="DiamondSprite" type="Sprite2D" parent="."]
+position = Vector2(-5.96046e-08, -5.96046e-08)
+scale = Vector2(0.875, 0.875)
+texture = ExtResource("2_aa736")
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.75, 0.767857)
+polygon = PackedVector2Array(0, -9.11628, 6.66667, -2.60465, 0, 9.11628, -4, 2.60465, -6.66667, -2.60465)

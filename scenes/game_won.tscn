@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://ku1mpxt0siug"]
+
+[ext_resource type="Script" path="res://scenes/game_won.gd" id="1_l4wfy"]
+
+[node name="Game Won" type="Node2D"]
+script = ExtResource("1_l4wfy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.102344
+anchor_top = 0.254167
+anchor_right = 0.901563
+anchor_bottom = 0.675
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label Title" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+anchor_left = 0.269795
+anchor_top = 0.171617
+anchor_right = 0.738025
+anchor_bottom = 0.49505
+theme_override_font_sizes/font_size = 40
+text = "Thanks for playing!"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 0
+anchor_left = 0.341153
+anchor_top = 0.528053
+anchor_right = 0.664712
+anchor_bottom = 0.828383
+text = "Main Menu"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="CanvasLayer/Panel/Button" to="." method="_on_button_pressed"]

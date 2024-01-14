@@ -1,0 +1,111 @@
+[gd_scene load_steps=13 format=3 uid="uid://dgb13qkybfonc"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_dp5be"]
+[ext_resource type="Script" path="res://scripts/gun.gd" id="3_mijhl"]
+[ext_resource type="Texture2D" uid="uid://b22twkhqwpr5b" path="res://graphics/gun.png" id="4_fq7u0"]
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="4_l5w5t"]
+[ext_resource type="Texture2D" uid="uid://cspp0uqnm1e4f" path="res://graphics/character_crouch_facingLeft.png" id="5_h723s"]
+[ext_resource type="Texture2D" uid="uid://6os3igme6tms" path="res://graphics/shot.png" id="5_pkrjh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oexbk"]
+size = Vector2(12, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2c7cj"]
+size = Vector2(12, 10)
+
+[sub_resource type="Gradient" id="Gradient_uw8k6"]
+offsets = PackedFloat32Array(0, 0.653333, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="PackedScene" id="PackedScene_lsexj"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("Impact Particles", "CPUParticles2D", "emitting", "amount", "lifetime", "one_shot", "direction", "gravity", "initial_velocity_min", "initial_velocity_max", "color_ramp"),
+"node_count": 1,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 9, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 8, 0),
+"variants": [false, 20, 0.25, true, Vector2(0, 0), Vector2(0, 450), 75.0, 150.0, SubResource("Gradient_uw8k6")],
+"version": 3
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ux82"]
+size = Vector2(2, 2)
+
+[sub_resource type="PackedScene" id="PackedScene_44aa5"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(1073741827, 1073741826, 18, 17, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("Bullet", "RigidBody2D", "collision_layer", "collision_mask", "gravity_scale", "continuous_cd", "max_contacts_reported", "contact_monitor", "script", "impact_particles", "Sprite2D", "Sprite2D", "scale", "texture", "CollisionShape2D", "CollisionShape2D", "shape", "_on_body_entered", "body_entered"),
+"node_count": 3,
+"node_paths": [NodePath("."), NodePath("."), NodePath("."), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 8, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 0, 1073741824, 0, 11, 10, -1, 2, 12, 8, 13, 9, 0, 1073741825, 0, 15, 14, -1, 1, 16, 10, 0),
+"variants": [8, 5, 0.0, 1, 1, true, ExtResource("4_l5w5t"), SubResource("PackedScene_lsexj"), Vector2(1.5625, 1.5625), ExtResource("5_pkrjh"), SubResource("RectangleShape2D_3ux82")],
+"version": 3
+}
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gun", "player_sprite")]
+disable_mode = 1
+collision_layer = 2
+collision_mask = 21
+floor_stop_on_slope = false
+script = ExtResource("1_dp5be")
+gun = NodePath("Gun")
+player_sprite = NodePath("Player Sprite")
+
+[node name="Player Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("5_h723s")
+
+[node name="CollisionShapeNormal" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_oexbk")
+
+[node name="CollisionShapeCrouched" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2c7cj")
+
+[node name="Gun" type="Node2D" parent="." node_paths=PackedStringArray("shot_spawn", "shot_spawn_left", "shot_spawn_2", "shot_spawn_left_2", "shot_spawn_3", "shot_spawn_left_3", "gun_sprite", "gun_sprite_left")]
+script = ExtResource("3_mijhl")
+bullet = SubResource("PackedScene_44aa5")
+shot_spawn = NodePath("Shot Spawn")
+shot_spawn_left = NodePath("Shot SpawnLeft")
+shot_spawn_2 = NodePath("Shot Spawn2")
+shot_spawn_left_2 = NodePath("Shot SpawnLeft2")
+shot_spawn_3 = NodePath("Shot Spawn3")
+shot_spawn_left_3 = NodePath("Shot SpawnLeft3")
+gun_sprite = NodePath("Sprite")
+gun_sprite_left = NodePath("SpriteLeft")
+
+[node name="Sprite" type="Sprite2D" parent="Gun"]
+position = Vector2(7, 3)
+texture = ExtResource("4_fq7u0")
+
+[node name="SpriteLeft" type="Sprite2D" parent="Gun"]
+position = Vector2(7, -1)
+texture = ExtResource("4_fq7u0")
+flip_v = true
+
+[node name="Shot Spawn" type="Marker2D" parent="Gun"]
+position = Vector2(9, 2)
+
+[node name="Shot SpawnLeft" type="Marker2D" parent="Gun"]
+position = Vector2(9, 0)
+
+[node name="Shot Spawn2" type="Marker2D" parent="Gun"]
+position = Vector2(9, 5)
+
+[node name="Shot SpawnLeft2" type="Marker2D" parent="Gun"]
+position = Vector2(9, -3)
+
+[node name="Shot Spawn3" type="Marker2D" parent="Gun"]
+position = Vector2(12, 3)
+
+[node name="Shot SpawnLeft3" type="Marker2D" parent="Gun"]
+position = Vector2(12, -2)
+
+[node name="Hit Timer" type="Timer" parent="."]
+wait_time = 0.15
+
+[connection signal="timeout" from="Hit Timer" to="." method="_on_hit_timer_timeout"]

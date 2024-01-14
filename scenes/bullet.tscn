@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://qph1qmx455im"]
+
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_1ddfs"]
+[ext_resource type="Texture2D" uid="uid://6os3igme6tms" path="res://graphics/shot.png" id="1_6loi0"]
+[ext_resource type="Script" path="res://scripts/smoother.gd" id="2_b1e3u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ux82"]
+size = Vector2(2, 2)
+
+[node name="Bullet" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 5
+mass = 25.0
+gravity_scale = 0.0
+continuous_cd = 2
+max_contacts_reported = 2
+contact_monitor = true
+script = ExtResource("1_1ddfs")
+
+[node name="Smoother" type="Node" parent="."]
+script = ExtResource("2_b1e3u")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5625, 1.5625)
+texture = ExtResource("1_6loi0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3ux82")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

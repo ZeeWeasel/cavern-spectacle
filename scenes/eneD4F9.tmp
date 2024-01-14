@@ -1,0 +1,156 @@
+[gd_scene load_steps=20 format=3 uid="uid://o8mgyfi2d175"]
+
+[ext_resource type="Script" path="res://scenes/enemy_turret.gd" id="1_a7qan"]
+[ext_resource type="PackedScene" uid="uid://5eub6mawqxb2" path="res://scenes/turret_death.tscn" id="2_eounb"]
+[ext_resource type="Script" path="res://scenes/bullet.gd" id="3_iqa7r"]
+[ext_resource type="PackedScene" uid="uid://dv0y04qudl5l3" path="res://scenes/coin.tscn" id="3_mcm0v"]
+[ext_resource type="Texture2D" uid="uid://crfggggrs5wcj" path="res://graphics/turret_tank_bottom.png" id="4_8e2yx"]
+[ext_resource type="Texture2D" uid="uid://33wvjlrbagl3" path="res://graphics/turret_tank_top.png" id="4_iwd68"]
+[ext_resource type="Script" path="res://smoother.gd" id="4_mk2oq"]
+[ext_resource type="Texture2D" uid="uid://ra8tk0c843iw" path="res://graphics/turret_barrel.png" id="5_51vdp"]
+[ext_resource type="Texture2D" uid="uid://6os3igme6tms" path="res://graphics/shot.png" id="5_neg5n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ux82"]
+size = Vector2(2, 2)
+
+[sub_resource type="PackedScene" id="PackedScene_802lc"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(1073741828, 1073741827, 22, 21, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("Bullet Turret", "RigidBody2D", "collision_layer", "collision_mask", "gravity_scale", "continuous_cd", "max_contacts_reported", "contact_monitor", "linear_damp_mode", "script", "Smoother", "Node", "script", "Sprite2D", "Sprite2D", "self_modulate", "scale", "texture", "CollisionShape2D", "CollisionShape2D", "shape", "_on_body_entered", "body_entered"),
+"node_count": 4,
+"node_paths": [NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 8, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 0, 1073741824, 0, 11, 10, -1, 1, 12, 8, 0, 1073741825, 0, 14, 13, -1, 3, 15, 9, 16, 10, 17, 11, 0, 1073741826, 0, 19, 18, -1, 1, 20, 12, 0),
+"variants": [8, 71, 0.0, 2, 2, true, 1, ExtResource("3_iqa7r"), ExtResource("4_mk2oq"), Color(1, 0.0627451, 0.0627451, 1), Vector2(1.5625, 1.5625), ExtResource("5_neg5n"), SubResource("RectangleShape2D_3ux82")],
+"version": 3
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ufmmn"]
+size = Vector2(2, 2)
+
+[sub_resource type="PackedScene" id="PackedScene_suhqn"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(1073741828, 1073741827, 20, 19, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("Bullet", "RigidBody2D", "collision_layer", "collision_mask", "gravity_scale", "continuous_cd", "max_contacts_reported", "contact_monitor", "script", "Smoother", "Node", "script", "Sprite2D", "Sprite2D", "scale", "texture", "CollisionShape2D", "CollisionShape2D", "shape", "_on_body_entered", "body_entered"),
+"node_count": 4,
+"node_paths": [NodePath("."), NodePath("."), NodePath("."), NodePath("."), NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 7, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 0, 1073741824, 0, 10, 9, -1, 1, 11, 7, 0, 1073741825, 0, 13, 12, -1, 2, 14, 8, 15, 9, 0, 1073741826, 0, 17, 16, -1, 1, 18, 10, 0),
+"variants": [8, 5, 0.0, 2, 2, true, ExtResource("3_iqa7r"), ExtResource("4_mk2oq"), Vector2(1.5625, 1.5625), ExtResource("5_neg5n"), SubResource("RectangleShape2D_ufmmn")],
+"version": 3
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n5hef"]
+radius = 8.0
+
+[sub_resource type="Gradient" id="Gradient_5kqm5"]
+colors = PackedColorArray(0.745098, 0.862745, 0.498039, 1, 0.745098, 0.862745, 0.498039, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l23rq"]
+gradient = SubResource("Gradient_5kqm5")
+
+[sub_resource type="Animation" id="Animation_p1wuh"]
+resource_name = "ammo_state"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-0.00244141, 0.15625), Vector2(0.15625, 0.15625)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-5, 5), Vector2(-5, 5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vfrbb"]
+_data = {
+"ammo_state": SubResource("Animation_p1wuh")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ewa6c"]
+radius = 9.0
+
+[node name="Enemy Turret" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 66
+can_sleep = false
+freeze = true
+continuous_cd = 1
+script = ExtResource("1_a7qan")
+idle_rotate_speed = null
+bullet = SubResource("PackedScene_802lc")
+shot_speed = 500.0
+turret_death = ExtResource("2_eounb")
+bullet_turret = SubResource("PackedScene_suhqn")
+time_until_stop_chasing = null
+detection_range = null
+hit_points_max = null
+coin = ExtResource("3_mcm0v")
+coins_per_turret = null
+interval_rotate = null
+shot_interval = 0.25
+deg_treshold_shoot = null
+rotation_deg_sec = null
+reload_duration = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_n5hef")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Sprite Tank Bottom" type="Sprite2D" parent="."]
+texture = ExtResource("4_8e2yx")
+
+[node name="Barrel" type="Node2D" parent="."]
+
+[node name="Sprite Barrel" type="Sprite2D" parent="Barrel"]
+rotation = 1.5708
+texture = ExtResource("5_51vdp")
+
+[node name="Marker2D" type="Marker2D" parent="Barrel/Sprite Barrel"]
+position = Vector2(0, -15)
+
+[node name="Sprite Tank Top" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("4_iwd68")
+
+[node name="Ammo Indicator" type="Sprite2D" parent="."]
+position = Vector2(-5, 5)
+rotation = -1.5708
+scale = Vector2(-0.00244141, 0.15625)
+texture = SubResource("GradientTexture2D_l23rq")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Ammo Indicator"]
+libraries = {
+"": SubResource("AnimationLibrary_vfrbb")
+}
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_ewa6c")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 0)
+collision_mask = 67
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

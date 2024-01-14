@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://8q68mjkpr4h"]
+
+[ext_resource type="PackedScene" uid="uid://cfnaeo2wj683m" path="res://scenes/level.tscn" id="1_37nmh"]
+[ext_resource type="PackedScene" uid="uid://dgb13qkybfonc" path="res://scenes/player.tscn" id="2_secic"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Level" parent="." instance=ExtResource("1_37nmh")]
+position = Vector2(-5, 12)
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." node_paths=PackedStringArray("gun") instance=ExtResource("2_secic")]
+gun = NodePath("Gun")
+time_between_shots = null
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-19, 26)
+zoom = Vector2(3, 3)

@@ -1,0 +1,143 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnddpi4sbg6r1"]
+
+[ext_resource type="Script" path="res://scripts/transition_scene.gd" id="1_eihcl"]
+[ext_resource type="Script" path="res://scripts/upgrade_panel.gd" id="2_3l5o1"]
+
+[node name="TransitionScene" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1308.0
+offset_top = 322.0
+offset_right = 1348.0
+offset_bottom = 362.0
+script = ExtResource("1_eihcl")
+
+[node name="Next Level" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -19.8
+anchor_top = 3.2
+anchor_right = -13.35
+anchor_bottom = 6.125
+grow_horizontal = 2
+grow_vertical = 2
+text = "Next Level"
+metadata/_edit_use_anchors_ = true
+
+[node name="Upgrade Panel" type="Panel" parent="."]
+layout_mode = 0
+anchor_left = -29.975
+anchor_top = -7.525
+anchor_right = -2.325
+anchor_bottom = 2.25
+script = ExtResource("2_3l5o1")
+metadata/_edit_use_anchors_ = true
+
+[node name="Shot Speed 1" type="Button" parent="Upgrade Panel"]
+layout_mode = 0
+anchor_left = 0.0352622
+anchor_top = 0.0818414
+anchor_right = 0.27396
+anchor_bottom = 0.255754
+offset_right = 3.05176e-05
+text = "Shot Speed 1"
+metadata/_edit_use_anchors_ = true
+
+[node name="Shot Speed 2" type="Button" parent="Upgrade Panel"]
+layout_mode = 0
+anchor_left = 0.0334539
+anchor_top = 0.276215
+anchor_right = 0.272152
+anchor_bottom = 0.450128
+text = "Shot Speed 2"
+metadata/_edit_use_anchors_ = true
+
+[node name="Shot Speed 3" type="Button" parent="Upgrade Panel"]
+layout_mode = 0
+anchor_left = 0.0370705
+anchor_top = 0.473146
+anchor_right = 0.275769
+anchor_bottom = 0.647059
+offset_bottom = -1.52588e-05
+text = "Shot Speed 3"
+metadata/_edit_use_anchors_ = true
+
+[node name="Extra Shot 1" type="Button" parent="Upgrade Panel"]
+layout_mode = 0
+anchor_left = 0.307414
+anchor_top = 0.0818414
+anchor_right = 0.546112
+anchor_bottom = 0.255754
+text = "Extra Shot 1"
+metadata/_edit_use_anchors_ = true
+
+[node name="Extra Shot 2" type="Button" parent="Upgrade Panel"]
+layout_mode = 0
+anchor_left = 0.307414
+anchor_top = 0.276215
+anchor_right = 0.546112
+anchor_bottom = 0.450128
+text = "Extra Shot 2"
+metadata/_edit_use_anchors_ = true
+
+[node name="Extra Jump" type="Button" parent="Upgrade Panel"]
+layout_mode = 0
+anchor_left = 0.309222
+anchor_top = 0.580563
+anchor_right = 0.54792
+anchor_bottom = 0.754476
+offset_right = 6.10352e-05
+text = "Extra Jump"
+metadata/_edit_use_anchors_ = true
+
+[node name="Double The Bats" type="Button" parent="Upgrade Panel"]
+layout_mode = 0
+anchor_left = 0.632911
+anchor_top = 0.0895141
+anchor_right = 0.871609
+anchor_bottom = 0.263427
+text = "Double The Bats"
+metadata/_edit_use_anchors_ = true
+
+[node name="Quadruple Bats" type="Button" parent="Upgrade Panel"]
+layout_mode = 0
+anchor_left = 0.632911
+anchor_top = 0.296675
+anchor_right = 0.871609
+anchor_bottom = 0.470588
+text = "Quadruple Bats"
+metadata/_edit_use_anchors_ = true
+
+[node name="All The Bats" type="Button" parent="Upgrade Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.630199
+anchor_top = 0.680307
+anchor_right = 0.868897
+anchor_bottom = 0.85422
+text = "ALL the Bats!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Upgrade Panel"]
+layout_mode = 0
+anchor_left = 0.649186
+anchor_top = 0.544757
+anchor_right = 0.85443
+anchor_bottom = 0.670077
+offset_top = 1.52588e-05
+offset_bottom = -24.0
+text = "Warning: Will cook your CPU!
+JUse at your own risk!"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="button_up" from="Next Level" to="." method="_on_next_level_button_up"]
+[connection signal="pressed" from="Upgrade Panel/Shot Speed 1" to="Upgrade Panel" method="_on_shot_speed_1_pressed"]
+[connection signal="pressed" from="Upgrade Panel/Shot Speed 2" to="Upgrade Panel" method="_on_shot_speed_2_pressed"]
+[connection signal="pressed" from="Upgrade Panel/Shot Speed 3" to="Upgrade Panel" method="_on_shot_speed_3_pressed"]
+[connection signal="pressed" from="Upgrade Panel/Extra Shot 1" to="Upgrade Panel" method="_on_extra_shot_1_pressed"]
+[connection signal="pressed" from="Upgrade Panel/Extra Shot 2" to="Upgrade Panel" method="_on_extra_shot_2_pressed"]
+[connection signal="pressed" from="Upgrade Panel/Extra Jump" to="Upgrade Panel" method="_on_extra_jump_pressed"]
+[connection signal="pressed" from="Upgrade Panel/Double The Bats" to="Upgrade Panel" method="_on_double_the_bats_pressed"]
+[connection signal="pressed" from="Upgrade Panel/Quadruple Bats" to="Upgrade Panel" method="_on_quadruple_bats_pressed"]
+[connection signal="pressed" from="Upgrade Panel/All The Bats" to="Upgrade Panel" method="_on_all_the_bats_pressed"]

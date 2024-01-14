@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvqgwanibjf1h"]
+
+[ext_resource type="Script" path="res://scripts/hud_death.gd" id="1_h8xfj"]
+
+[node name="HUD Death" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h8xfj")
+metadata/_edit_use_anchors_ = true
+
+[node name="Container" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Container"]
+layout_mode = 2
+anchor_left = 0.350413
+anchor_top = 0.306075
+anchor_right = 0.671413
+anchor_bottom = 0.523445
+theme_override_font_sizes/font_size = 100
+text = "DEATH!"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Button Restart Level" type="Button" parent="Container"]
+layout_mode = 2
+anchor_left = 0.416564
+anchor_top = 0.536398
+anchor_right = 0.602585
+anchor_bottom = 0.657546
+text = "Restart Level"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Container/Button Restart Level" to="." method="_on_button_restart_level_pressed"]

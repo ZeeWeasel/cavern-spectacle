@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://8q68mjkpr4h"]
+
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_1kk23"]
+[ext_resource type="PackedScene" uid="uid://cfnaeo2wj683m" path="res://scenes/level.tscn" id="1_37nmh"]
+[ext_resource type="Texture2D" uid="uid://b5c32olklti4q" path="res://maps/map_test.png" id="2_p3i3o"]
+[ext_resource type="Texture2D" uid="uid://dstvqysuffom4" path="res://maps/map_0_tutorial.png" id="2_s6aw5"]
+[ext_resource type="PackedScene" uid="uid://dgb13qkybfonc" path="res://scenes/player.tscn" id="2_secic"]
+[ext_resource type="Texture2D" uid="uid://c66sk6fcfpc7c" path="res://maps/map_1.png" id="3_ldmer"]
+[ext_resource type="Texture2D" uid="uid://bsbv7x2korypf" path="res://graphics/particle_square.png" id="4_6gaa1"]
+[ext_resource type="Script" path="res://transition_scene.gd" id="5_78j8t"]
+[ext_resource type="Script" path="res://scenes/Camera2D.gd" id="5_vloeo"]
+
+[sub_resource type="PackedScene" id="PackedScene_ghqsk"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(1073741826, 1073741825, 22, 21, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("TransitionScene", "Control", "layout_mode", "anchors_preset", "offset_left", "offset_top", "offset_right", "offset_bottom", "script", "Next Level", "Button", "layout_mode", "anchors_preset", "anchor_left", "anchor_top", "anchor_right", "anchor_bottom", "grow_horizontal", "grow_vertical", "text", "metadata/_edit_use_anchors_", "_on_next_level_button_up", "button_up"),
+"node_count": 2,
+"node_paths": [NodePath("."), NodePath("."), NodePath("Next Level")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 7, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 0, 1073741824, 0, 10, 9, -1, 10, 11, 7, 12, 8, 13, 9, 14, 10, 15, 11, 16, 12, 17, 13, 18, 14, 19, 15, 20, 16, 0),
+"variants": [3, 0, 1308.0, 322.0, 1348.0, 362.0, ExtResource("5_78j8t"), 1, -1, -10.675, 2.6, -4.225, 6.625, 2, 2, "Next Level", true],
+"version": 3
+}
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_1kk23")
+map_list = Array[Texture]([ExtResource("2_s6aw5"), ExtResource("3_ldmer"), ExtResource("2_p3i3o")])
+transition_scene = SubResource("PackedScene_ghqsk")
+level = Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-5, 12),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://scenes/level.gd"),"map":Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":Resource("res://scenes/map_reader.gd"))
+,"exit":Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://exit.gd"),"lock":Object(Sprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, -16.2621),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"texture":Resource("res://graphics/lock_outline.png"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":1,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+)
+,"key":Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(59, -40),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":null)
+,"ground_piece":null,"enemy_bats":Resource("res://scenes/bat.tscn"),"max_debris":200,"ground_piece_spawn_count":5,"metadata/_edit_lock_":true)
+
+player = Object(CharacterBody2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(21, -27),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"disable_mode":0,"collision_layer":2,"collision_mask":21,"collision_priority":1.0,"input_pickable":false,"motion_mode":0,"up_direction":Vector2(0, -1),"velocity":Vector2(0, 0),"slide_on_ceiling":true,"max_slides":4,"wall_min_slide_angle":0.261799,"floor_stop_on_slope":false,"floor_constant_speed":false,"floor_block_on_wall":true,"floor_max_angle":0.785398,"floor_snap_length":1.0,"platform_on_leave":0,"platform_floor_layers":4294967295,"platform_wall_layers":0,"safe_margin":0.08,"script":Resource("res://scripts/player.gd"),"gun":Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":Resource("res://scripts/gun.gd"),"bullet":null,"shot_spawn":Object(Marker2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(9, -1),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"gizmo_extents":10.0,"script":null)
+,"time_between_shots":0.1,"shot_speed":1000.0)
+)
+
+
+[node name="Bullets" type="Node2D" parent="."]
+
+[node name="Level" parent="." node_paths=PackedStringArray("map", "exit", "key") instance=ExtResource("1_37nmh")]
+position = Vector2(-5, 12)
+map = NodePath("MapReader")
+exit = NodePath("TileMap/Exit")
+key = NodePath("Key")
+max_debris = 200
+ground_piece_spawn_count = 5
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." node_paths=PackedStringArray("gun") instance=ExtResource("2_secic")]
+gun = NodePath("Gun")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-1, -1)
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+drag_top_margin = 0.25
+drag_bottom_margin = 0.0
+script = ExtResource("5_vloeo")
+
+[node name="Background" type="Sprite2D" parent="Player/Camera2D"]
+modulate = Color(0.0156863, 0.0470588, 0.0235294, 1)
+z_index = -10
+position = Vector2(-2, 11)
+scale = Vector2(500, 500)
+texture = ExtResource("4_6gaa1")

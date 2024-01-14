@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://bksmtsfj4ka32"]
+
+[ext_resource type="Texture2D" uid="uid://cp7vjrbnnbgye" path="res://graphics/ground_piece_1.png" id="1_7hnju"]
+
+[node name="Ground Piece" type="RigidBody2D"]
+z_index = -2
+collision_layer = 64
+collision_mask = 67
+mass = 0.01
+can_sleep = false
+max_contacts_reported = 3
+
+[node name="GroundPiece1" type="Sprite2D" parent="."]
+position = Vector2(-0.285604, -0.0865417)
+rotation = 2.37714
+scale = Vector2(0.75, 0.765)
+texture = ExtResource("1_7hnju")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-0.215242, -0.293708)
+scale = Vector2(0.526905, 0.536713)
+polygon = PackedVector2Array(-2, -5, -5, -2, -5, 2, -2, 5, 2, 5, 5, 2, 5, -2, 2, -5)
