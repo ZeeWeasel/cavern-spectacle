@@ -1,0 +1,152 @@
+[gd_scene load_steps=6 format=3 uid="uid://wf5womlcvd6a"]
+
+[ext_resource type="Script" path="res://scenes/pause.gd" id="1_2jmb1"]
+[ext_resource type="Texture2D" uid="uid://3is8dtkeq1xs" path="res://graphics/twitch.png" id="2_6jvbf"]
+[ext_resource type="Theme" uid="uid://bqi52p5nbj8qc" path="res://theme.tres" id="2_fxohk"]
+
+[sub_resource type="Animation" id="Animation_57r4m"]
+resource_name = "bounce"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(672, 586), Vector2(672, 569), Vector2(672, 586)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7puwi"]
+_data = {
+"bounce": SubResource("Animation_57r4m")
+}
+
+[node name="Pause" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_2jmb1")
+
+[node name="Pause Overlay" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="Twitch" type="Sprite2D" parent="Pause Overlay"]
+z_index = 10
+position = Vector2(672, 569.102)
+scale = Vector2(7.40384, 7.40385)
+texture = ExtResource("2_6jvbf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pause Overlay/Twitch"]
+libraries = {
+"": SubResource("AnimationLibrary_7puwi")
+}
+autoplay = "bounce"
+
+[node name="Button Twitch" type="Button" parent="Pause Overlay/Twitch"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = -0.346154
+anchor_top = -0.375
+anchor_right = 1.26923
+anchor_bottom = 1.125
+offset_left = -61.5468
+offset_top = 32.9497
+offset_right = -61.5468
+offset_bottom = 32.9497
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel Controls" type="Panel" parent="Pause Overlay"]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 1
+anchors_preset = -1
+anchor_left = 0.738281
+anchor_top = 0.6375
+anchor_right = 0.976563
+anchor_bottom = 0.961111
+offset_left = 4.0
+offset_top = 1.0
+offset_right = 4.0
+offset_bottom = 1.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label Title Controls" type="Label" parent="Pause Overlay/Panel Controls"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.121311
+anchor_right = 0.891803
+anchor_bottom = 0.236051
+theme = ExtResource("2_fxohk")
+theme_override_font_sizes/font_size = 30
+text = "Controls"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Label Controls List" type="Label" parent="Pause Overlay/Panel Controls"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0983607
+anchor_top = 0.270386
+anchor_right = 0.881967
+anchor_bottom = 0.927039
+theme = ExtResource("2_fxohk")
+text = "WASD : MOVE
+Space : JUMP
+LMb : SHOOT
+CTRL : CROUCH"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Background (Panel)" type="Panel" parent="Pause Overlay"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Button Restart" type="Button" parent="Pause Overlay/Background (Panel)"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.378125
+anchor_top = 0.545833
+anchor_right = 0.657031
+anchor_bottom = 0.618055
+theme = ExtResource("2_fxohk")
+theme_override_colors/font_color = Color(0.877346, 3.87453e-06, 1.2514e-06, 1)
+text = "Restart Level"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button Resume" type="Button" parent="Pause Overlay/Background (Panel)"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.378125
+anchor_top = 0.372222
+anchor_right = 0.657032
+anchor_bottom = 0.519444
+theme = ExtResource("2_fxohk")
+theme_override_font_sizes/font_size = 30
+text = "Resume"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Pause Overlay/Background (Panel)"]
+layout_mode = 0
+anchor_left = 0.316406
+anchor_top = 0.1625
+anchor_right = 0.720312
+anchor_bottom = 0.309722
+theme = ExtResource("2_fxohk")
+theme_override_font_sizes/font_size = 45
+text = "Pausing"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Pause Overlay/Background (Panel)/Button Restart" to="." method="_on_button_restart_pressed"]
+[connection signal="pressed" from="Pause Overlay/Background (Panel)/Button Resume" to="." method="_on_button_resume_pressed"]

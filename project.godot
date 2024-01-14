@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Fusion"
+config/name="Cavern Spectacle"
+config/version="1.0"
 run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3")
 config/icon="res://icon.svg"
@@ -38,7 +39,14 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 [file_customization]
 
 folder_colors={
-"res://maps/": "orange"
+"res://addons/": "red",
+"res://fonts/": "orange",
+"res://graphics/": "yellow",
+"res://maps/": "green",
+"res://output/": "teal",
+"res://scenes/": "blue",
+"res://scripts/": "purple",
+"res://sounds/": "gray"
 }
 
 [input]

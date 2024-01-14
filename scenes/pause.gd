@@ -2,6 +2,10 @@ extends Node2D
 
 var paused : bool = false
 
+func _ready():
+	$"Pause Overlay".visible = false
+	pass
+
 func _process(_delta):
 	if Input.is_action_just_pressed("menu"):
 		if paused:
@@ -25,3 +29,6 @@ func _on_button_restart_pressed():
 
 func _on_button_resume_pressed():
 	resume_game()
+	
+func _on_button_twitch_pressed():
+	OS.shell_open("http://live.weaseldev.com")

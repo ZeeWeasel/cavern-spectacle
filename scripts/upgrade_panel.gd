@@ -26,7 +26,11 @@ func _ready():
 
 func button_setup(btn: Button, cost: int, bought : bool):
 	if bought: set_button_bought(btn)
-	else: btn.text = btn.text + " " + str(cost)
+	else: 
+		if cost<0: 
+			btn.text = btn.text + " +" + str(cost*-1)
+		else:
+			btn.text = btn.text + " " + str(cost)
 
 func buy(cost : int, btn : Button) -> bool:
 	if cost <= Globals.coins:

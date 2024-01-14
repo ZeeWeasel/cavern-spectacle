@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://48chuq7juon" path="res://graphics/coin.png" id="3_s0usu"]
 [ext_resource type="Texture2D" uid="uid://bsbv7x2korypf" path="res://graphics/particle_square.png" id="4_kumvx"]
 [ext_resource type="TileSet" uid="uid://pi0c3rknrrfx" path="res://tileset_menus.tres" id="6_f8q08"]
-[ext_resource type="Script" path="res://scenes/bat_menu.gd" id="7_bwmhg"]
+[ext_resource type="Script" path="res://scripts/bat_menu.gd" id="7_bwmhg"]
 [ext_resource type="Texture2D" uid="uid://dvmt2x8qnbtsr" path="res://graphics/bat_wing_left.png" id="8_7c6ww"]
 [ext_resource type="Texture2D" uid="uid://bbty25kvquvlv" path="res://graphics/exit_open.png" id="8_msgh8"]
 [ext_resource type="Texture2D" uid="uid://dn7gwrlifsi17" path="res://graphics/bat_wing_right.png" id="9_q7wok"]
