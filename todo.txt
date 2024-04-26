@@ -3,15 +3,22 @@ Nice To Have
 ✔️ Game Won Screen Design
 ✔️ Test Map_5 
 - More Maps
-- Redraw Heart
+✔️ Redraw Heart
 - Landing Sound
 	- Little Particle Spray when hitting ground at certain magnitude
-	- Particle Effect Of Cloud When Jumping
-- Drop Hearts as Pickups with chance
-- Invincibility for a moment for player after damage
+	✔️ Particle Effect Of Cloud When Jumping
+	
+	
 - Music
+
+---
+
 - Screenshots
 - Video Capture For Trailer
+
+	
+- Drop Hearts as Pickups with chance
+- Invincibility for a moment for player after damage
 - Make Player Explode
 - Explode Heart when Hit
 - Dialogue Manager?
